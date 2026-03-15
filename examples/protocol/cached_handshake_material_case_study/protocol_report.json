@@ -1,0 +1,1114 @@
+{
+  "artifacts": [
+    {
+      "artifact_id": "art-1088fb3877cd",
+      "artifact_type": "protocol_trace",
+      "source_path": "examples/protocol/cached_handshake_material_case_study/session.txt",
+      "content": "[00:00:01] CLIENT -> EDGE : CLIENTHELLO device cam-22 firmware 4.3\n[00:00:02] EDGE -> CLIENT : SERVERHELLO profile resume-v1\n[00:00:03] EDGE -> CLIENT : CHALLENGE ticket TKT-7788 nonce N-8844\n[00:00:04] CLIENT -> EDGE : RESPONSE proof P-ABCD ticket TKT-7788\n[00:00:05] EDGE -> CLIENT : ACK session_id SID-120\n[00:01:11] CLIENT -> EDGE : CLIENTHELLO device cam-22 firmware 4.3\n[00:01:12] EDGE -> CLIENT : SERVERHELLO profile resume-v1\n[00:01:13] EDGE -> CLIENT : CHALLENGE ticket TKT-7788 nonce N-8844\n[00:01:14] CLIENT -> EDGE : RESPONSE proof P-ABCD ticket TKT-7788\n[00:01:15] EDGE -> CLIENT : ACK session_id SID-120\n",
+      "metadata": {
+        "filename": "session.txt",
+        "suffix": ".txt",
+        "size_bytes": 618,
+        "line_count": 10,
+        "looks_like_transcript": true
+      }
+    }
+  ],
+  "analysis_results": [
+    {
+      "analyzer_name": "protocol",
+      "artifact": {
+        "artifact_id": "art-1088fb3877cd",
+        "artifact_type": "protocol_trace",
+        "source_path": "examples/protocol/cached_handshake_material_case_study/session.txt",
+        "content": "[00:00:01] CLIENT -> EDGE : CLIENTHELLO device cam-22 firmware 4.3\n[00:00:02] EDGE -> CLIENT : SERVERHELLO profile resume-v1\n[00:00:03] EDGE -> CLIENT : CHALLENGE ticket TKT-7788 nonce N-8844\n[00:00:04] CLIENT -> EDGE : RESPONSE proof P-ABCD ticket TKT-7788\n[00:00:05] EDGE -> CLIENT : ACK session_id SID-120\n[00:01:11] CLIENT -> EDGE : CLIENTHELLO device cam-22 firmware 4.3\n[00:01:12] EDGE -> CLIENT : SERVERHELLO profile resume-v1\n[00:01:13] EDGE -> CLIENT : CHALLENGE ticket TKT-7788 nonce N-8844\n[00:01:14] CLIENT -> EDGE : RESPONSE proof P-ABCD ticket TKT-7788\n[00:01:15] EDGE -> CLIENT : ACK session_id SID-120\n",
+        "metadata": {
+          "filename": "session.txt",
+          "suffix": ".txt",
+          "size_bytes": 618,
+          "line_count": 10,
+          "looks_like_transcript": true
+        }
+      },
+      "summary": "Processed 10 protocol messages; extracted 6 challenge-like indicators; observed 3 repeated server responses; detected 5 repeated challenge-like values; inferred challenge-response handshake; handshake complete.",
+      "evidence": [
+        {
+          "evidence_id": "evi-38663fa76500",
+          "kind": "protocol.transcript",
+          "location": null,
+          "summary": "Normalized protocol transcript available for downstream rules.",
+          "raw_value": [
+            {
+              "direction": "out",
+              "text": "CLIENTHELLO device cam-22 firmware 4.3",
+              "parsed": null,
+              "line_number": 1,
+              "metadata": {
+                "timestamp": "00:00:01",
+                "source": "CLIENT",
+                "destination": "EDGE"
+              }
+            },
+            {
+              "direction": "in",
+              "text": "SERVERHELLO profile resume-v1",
+              "parsed": null,
+              "line_number": 2,
+              "metadata": {
+                "timestamp": "00:00:02",
+                "source": "EDGE",
+                "destination": "CLIENT"
+              }
+            },
+            {
+              "direction": "in",
+              "text": "CHALLENGE ticket TKT-7788 nonce N-8844",
+              "parsed": null,
+              "line_number": 3,
+              "metadata": {
+                "timestamp": "00:00:03",
+                "source": "EDGE",
+                "destination": "CLIENT"
+              }
+            },
+            {
+              "direction": "out",
+              "text": "RESPONSE proof P-ABCD ticket TKT-7788",
+              "parsed": null,
+              "line_number": 4,
+              "metadata": {
+                "timestamp": "00:00:04",
+                "source": "CLIENT",
+                "destination": "EDGE"
+              }
+            },
+            {
+              "direction": "in",
+              "text": "ACK session_id SID-120",
+              "parsed": null,
+              "line_number": 5,
+              "metadata": {
+                "timestamp": "00:00:05",
+                "source": "EDGE",
+                "destination": "CLIENT"
+              }
+            },
+            {
+              "direction": "out",
+              "text": "CLIENTHELLO device cam-22 firmware 4.3",
+              "parsed": null,
+              "line_number": 6,
+              "metadata": {
+                "timestamp": "00:01:11",
+                "source": "CLIENT",
+                "destination": "EDGE"
+              }
+            },
+            {
+              "direction": "in",
+              "text": "SERVERHELLO profile resume-v1",
+              "parsed": null,
+              "line_number": 7,
+              "metadata": {
+                "timestamp": "00:01:12",
+                "source": "EDGE",
+                "destination": "CLIENT"
+              }
+            },
+            {
+              "direction": "in",
+              "text": "CHALLENGE ticket TKT-7788 nonce N-8844",
+              "parsed": null,
+              "line_number": 8,
+              "metadata": {
+                "timestamp": "00:01:13",
+                "source": "EDGE",
+                "destination": "CLIENT"
+              }
+            },
+            {
+              "direction": "out",
+              "text": "RESPONSE proof P-ABCD ticket TKT-7788",
+              "parsed": null,
+              "line_number": 9,
+              "metadata": {
+                "timestamp": "00:01:14",
+                "source": "CLIENT",
+                "destination": "EDGE"
+              }
+            },
+            {
+              "direction": "in",
+              "text": "ACK session_id SID-120",
+              "parsed": null,
+              "line_number": 10,
+              "metadata": {
+                "timestamp": "00:01:15",
+                "source": "EDGE",
+                "destination": "CLIENT"
+              }
+            }
+          ],
+          "metadata": {}
+        },
+        {
+          "evidence_id": "evi-c00fd5a174b9",
+          "kind": "protocol.parser_summary",
+          "location": null,
+          "summary": "Protocol transcript summary and extracted indicators.",
+          "raw_value": {
+            "message_count": 10,
+            "input_messages": 4,
+            "output_messages": 6,
+            "indicators": {
+              "challenge": true,
+              "ticket": true,
+              "nonce": true,
+              "proof": true,
+              "session_id": true
+            },
+            "message_shapes": {
+              "text:32": 6,
+              "text:29": 2,
+              "text:22": 2
+            },
+            "phase_counts": {
+              "hello": 4,
+              "challenge": 2,
+              "response": 2,
+              "ack": 2
+            },
+            "handshake_style": "challenge-response",
+            "handshake_complete": true
+          },
+          "metadata": {}
+        },
+        {
+          "evidence_id": "evi-0a0148e739db",
+          "kind": "protocol.state_tracking",
+          "location": null,
+          "summary": "Inferred protocol phases and state transitions.",
+          "raw_value": {
+            "phase_sequence": [
+              "hello",
+              "hello",
+              "challenge",
+              "response",
+              "ack",
+              "hello",
+              "hello",
+              "challenge",
+              "response",
+              "ack"
+            ],
+            "transitions": [
+              "hello->hello",
+              "hello->challenge",
+              "challenge->response",
+              "response->ack",
+              "ack->hello",
+              "hello->hello",
+              "hello->challenge",
+              "challenge->response",
+              "response->ack"
+            ],
+            "transition_counts": {
+              "hello->hello": 2,
+              "hello->challenge": 2,
+              "challenge->response": 2,
+              "response->ack": 2,
+              "ack->hello": 1
+            },
+            "loop_count": 4
+          },
+          "metadata": {}
+        },
+        {
+          "evidence_id": "evi-4aae45a778c5",
+          "kind": "protocol.challenge_indicators",
+          "location": null,
+          "summary": "Challenge-like fields were extracted from transcript content.",
+          "raw_value": [
+            {
+              "challenge": "ticket",
+              "ticket": "TKT-7788",
+              "nonce": "N-8844"
+            },
+            {
+              "proof": "P-ABCD",
+              "ticket": "TKT-7788"
+            },
+            {
+              "session_id": "SID-120"
+            },
+            {
+              "challenge": "ticket",
+              "ticket": "TKT-7788",
+              "nonce": "N-8844"
+            },
+            {
+              "proof": "P-ABCD",
+              "ticket": "TKT-7788"
+            },
+            {
+              "session_id": "SID-120"
+            }
+          ],
+          "metadata": {}
+        },
+        {
+          "evidence_id": "evi-77e98d8c99f1",
+          "kind": "protocol.repeated_responses",
+          "location": null,
+          "summary": "Repeated inbound responses were observed.",
+          "raw_value": {
+            "examples": [
+              "SERVERHELLO profile resume-v1",
+              "CHALLENGE ticket TKT-7788 nonce N-8844",
+              "ACK session_id SID-120"
+            ],
+            "count": 3
+          },
+          "metadata": {}
+        },
+        {
+          "evidence_id": "evi-dded712cd6c2",
+          "kind": "protocol.repeated_challenge_values",
+          "location": null,
+          "summary": "One or more challenge-like values repeated across messages.",
+          "raw_value": {
+            "challenge": "ticket",
+            "ticket": "TKT-7788",
+            "nonce": "N-8844",
+            "proof": "P-ABCD",
+            "session_id": "SID-120"
+          },
+          "metadata": {}
+        },
+        {
+          "evidence_id": "evi-0db42517d50c",
+          "kind": "protocol.handshake",
+          "location": null,
+          "summary": "Handshake-like pattern inferred from transcript.",
+          "raw_value": {
+            "style": "challenge-response",
+            "complete": true
+          },
+          "metadata": {}
+        }
+      ],
+      "findings": [
+        {
+          "finding_id": "find-e4bed007d797",
+          "title": "Challenge-like field observed",
+          "description": "The transcript or script contains challenge-like fields that may require replay-resistance and binding review.",
+          "severity": "info",
+          "confidence": 0.9,
+          "analyzer": "protocol",
+          "recommendation": "Review challenge generation, binding, and nonce lifecycle assumptions in the protocol flow.",
+          "evidence": [
+            {
+              "evidence_id": "evi-38663fa76500",
+              "kind": "protocol.transcript",
+              "location": null,
+              "summary": "Normalized protocol transcript available for downstream rules.",
+              "raw_value": [
+                {
+                  "direction": "out",
+                  "text": "CLIENTHELLO device cam-22 firmware 4.3",
+                  "parsed": null,
+                  "line_number": 1,
+                  "metadata": {
+                    "timestamp": "00:00:01",
+                    "source": "CLIENT",
+                    "destination": "EDGE"
+                  }
+                },
+                {
+                  "direction": "in",
+                  "text": "SERVERHELLO profile resume-v1",
+                  "parsed": null,
+                  "line_number": 2,
+                  "metadata": {
+                    "timestamp": "00:00:02",
+                    "source": "EDGE",
+                    "destination": "CLIENT"
+                  }
+                },
+                {
+                  "direction": "in",
+                  "text": "CHALLENGE ticket TKT-7788 nonce N-8844",
+                  "parsed": null,
+                  "line_number": 3,
+                  "metadata": {
+                    "timestamp": "00:00:03",
+                    "source": "EDGE",
+                    "destination": "CLIENT"
+                  }
+                },
+                {
+                  "direction": "out",
+                  "text": "RESPONSE proof P-ABCD ticket TKT-7788",
+                  "parsed": null,
+                  "line_number": 4,
+                  "metadata": {
+                    "timestamp": "00:00:04",
+                    "source": "CLIENT",
+                    "destination": "EDGE"
+                  }
+                },
+                {
+                  "direction": "in",
+                  "text": "ACK session_id SID-120",
+                  "parsed": null,
+                  "line_number": 5,
+                  "metadata": {
+                    "timestamp": "00:00:05",
+                    "source": "EDGE",
+                    "destination": "CLIENT"
+                  }
+                },
+                {
+                  "direction": "out",
+                  "text": "CLIENTHELLO device cam-22 firmware 4.3",
+                  "parsed": null,
+                  "line_number": 6,
+                  "metadata": {
+                    "timestamp": "00:01:11",
+                    "source": "CLIENT",
+                    "destination": "EDGE"
+                  }
+                },
+                {
+                  "direction": "in",
+                  "text": "SERVERHELLO profile resume-v1",
+                  "parsed": null,
+                  "line_number": 7,
+                  "metadata": {
+                    "timestamp": "00:01:12",
+                    "source": "EDGE",
+                    "destination": "CLIENT"
+                  }
+                },
+                {
+                  "direction": "in",
+                  "text": "CHALLENGE ticket TKT-7788 nonce N-8844",
+                  "parsed": null,
+                  "line_number": 8,
+                  "metadata": {
+                    "timestamp": "00:01:13",
+                    "source": "EDGE",
+                    "destination": "CLIENT"
+                  }
+                },
+                {
+                  "direction": "out",
+                  "text": "RESPONSE proof P-ABCD ticket TKT-7788",
+                  "parsed": null,
+                  "line_number": 9,
+                  "metadata": {
+                    "timestamp": "00:01:14",
+                    "source": "CLIENT",
+                    "destination": "EDGE"
+                  }
+                },
+                {
+                  "direction": "in",
+                  "text": "ACK session_id SID-120",
+                  "parsed": null,
+                  "line_number": 10,
+                  "metadata": {
+                    "timestamp": "00:01:15",
+                    "source": "EDGE",
+                    "destination": "CLIENT"
+                  }
+                }
+              ],
+              "metadata": {}
+            },
+            {
+              "evidence_id": "evi-c00fd5a174b9",
+              "kind": "protocol.parser_summary",
+              "location": null,
+              "summary": "Protocol transcript summary and extracted indicators.",
+              "raw_value": {
+                "message_count": 10,
+                "input_messages": 4,
+                "output_messages": 6,
+                "indicators": {
+                  "challenge": true,
+                  "ticket": true,
+                  "nonce": true,
+                  "proof": true,
+                  "session_id": true
+                },
+                "message_shapes": {
+                  "text:32": 6,
+                  "text:29": 2,
+                  "text:22": 2
+                },
+                "phase_counts": {
+                  "hello": 4,
+                  "challenge": 2,
+                  "response": 2,
+                  "ack": 2
+                },
+                "handshake_style": "challenge-response",
+                "handshake_complete": true
+              },
+              "metadata": {}
+            }
+          ],
+          "metadata": {
+            "rule_id": "PROTO-001",
+            "challenge_indicator_count": 6
+          }
+        },
+        {
+          "finding_id": "find-fa98511a1f49",
+          "title": "Repeated protocol responses detected",
+          "description": "Repeated inbound responses may indicate deterministic server behavior, weak challenge handling, or limited transcript variability.",
+          "severity": "low",
+          "confidence": 0.8,
+          "analyzer": "protocol",
+          "recommendation": "Replay the same interaction under controlled conditions and verify whether deterministic responses are expected.",
+          "evidence": [
+            {
+              "evidence_id": "evi-38663fa76500",
+              "kind": "protocol.transcript",
+              "location": null,
+              "summary": "Normalized protocol transcript available for downstream rules.",
+              "raw_value": [
+                {
+                  "direction": "out",
+                  "text": "CLIENTHELLO device cam-22 firmware 4.3",
+                  "parsed": null,
+                  "line_number": 1,
+                  "metadata": {
+                    "timestamp": "00:00:01",
+                    "source": "CLIENT",
+                    "destination": "EDGE"
+                  }
+                },
+                {
+                  "direction": "in",
+                  "text": "SERVERHELLO profile resume-v1",
+                  "parsed": null,
+                  "line_number": 2,
+                  "metadata": {
+                    "timestamp": "00:00:02",
+                    "source": "EDGE",
+                    "destination": "CLIENT"
+                  }
+                },
+                {
+                  "direction": "in",
+                  "text": "CHALLENGE ticket TKT-7788 nonce N-8844",
+                  "parsed": null,
+                  "line_number": 3,
+                  "metadata": {
+                    "timestamp": "00:00:03",
+                    "source": "EDGE",
+                    "destination": "CLIENT"
+                  }
+                },
+                {
+                  "direction": "out",
+                  "text": "RESPONSE proof P-ABCD ticket TKT-7788",
+                  "parsed": null,
+                  "line_number": 4,
+                  "metadata": {
+                    "timestamp": "00:00:04",
+                    "source": "CLIENT",
+                    "destination": "EDGE"
+                  }
+                },
+                {
+                  "direction": "in",
+                  "text": "ACK session_id SID-120",
+                  "parsed": null,
+                  "line_number": 5,
+                  "metadata": {
+                    "timestamp": "00:00:05",
+                    "source": "EDGE",
+                    "destination": "CLIENT"
+                  }
+                },
+                {
+                  "direction": "out",
+                  "text": "CLIENTHELLO device cam-22 firmware 4.3",
+                  "parsed": null,
+                  "line_number": 6,
+                  "metadata": {
+                    "timestamp": "00:01:11",
+                    "source": "CLIENT",
+                    "destination": "EDGE"
+                  }
+                },
+                {
+                  "direction": "in",
+                  "text": "SERVERHELLO profile resume-v1",
+                  "parsed": null,
+                  "line_number": 7,
+                  "metadata": {
+                    "timestamp": "00:01:12",
+                    "source": "EDGE",
+                    "destination": "CLIENT"
+                  }
+                },
+                {
+                  "direction": "in",
+                  "text": "CHALLENGE ticket TKT-7788 nonce N-8844",
+                  "parsed": null,
+                  "line_number": 8,
+                  "metadata": {
+                    "timestamp": "00:01:13",
+                    "source": "EDGE",
+                    "destination": "CLIENT"
+                  }
+                },
+                {
+                  "direction": "out",
+                  "text": "RESPONSE proof P-ABCD ticket TKT-7788",
+                  "parsed": null,
+                  "line_number": 9,
+                  "metadata": {
+                    "timestamp": "00:01:14",
+                    "source": "CLIENT",
+                    "destination": "EDGE"
+                  }
+                },
+                {
+                  "direction": "in",
+                  "text": "ACK session_id SID-120",
+                  "parsed": null,
+                  "line_number": 10,
+                  "metadata": {
+                    "timestamp": "00:01:15",
+                    "source": "EDGE",
+                    "destination": "CLIENT"
+                  }
+                }
+              ],
+              "metadata": {}
+            },
+            {
+              "evidence_id": "evi-c00fd5a174b9",
+              "kind": "protocol.parser_summary",
+              "location": null,
+              "summary": "Protocol transcript summary and extracted indicators.",
+              "raw_value": {
+                "message_count": 10,
+                "input_messages": 4,
+                "output_messages": 6,
+                "indicators": {
+                  "challenge": true,
+                  "ticket": true,
+                  "nonce": true,
+                  "proof": true,
+                  "session_id": true
+                },
+                "message_shapes": {
+                  "text:32": 6,
+                  "text:29": 2,
+                  "text:22": 2
+                },
+                "phase_counts": {
+                  "hello": 4,
+                  "challenge": 2,
+                  "response": 2,
+                  "ack": 2
+                },
+                "handshake_style": "challenge-response",
+                "handshake_complete": true
+              },
+              "metadata": {}
+            }
+          ],
+          "metadata": {
+            "rule_id": "PROTO-002",
+            "repeated_response_ratio": 0.5,
+            "threshold": 0.5
+          }
+        },
+        {
+          "finding_id": "find-deea43e568c4",
+          "title": "Challenge-like values repeat across messages",
+          "description": "A value labeled as a challenge, nonce, token, or similar field appears to repeat across messages.",
+          "severity": "medium",
+          "confidence": 0.9,
+          "analyzer": "protocol",
+          "recommendation": "Validate freshness guarantees and confirm whether these fields are truly session-unique rather than labels for static identifiers.",
+          "evidence": [
+            {
+              "evidence_id": "evi-38663fa76500",
+              "kind": "protocol.transcript",
+              "location": null,
+              "summary": "Normalized protocol transcript available for downstream rules.",
+              "raw_value": [
+                {
+                  "direction": "out",
+                  "text": "CLIENTHELLO device cam-22 firmware 4.3",
+                  "parsed": null,
+                  "line_number": 1,
+                  "metadata": {
+                    "timestamp": "00:00:01",
+                    "source": "CLIENT",
+                    "destination": "EDGE"
+                  }
+                },
+                {
+                  "direction": "in",
+                  "text": "SERVERHELLO profile resume-v1",
+                  "parsed": null,
+                  "line_number": 2,
+                  "metadata": {
+                    "timestamp": "00:00:02",
+                    "source": "EDGE",
+                    "destination": "CLIENT"
+                  }
+                },
+                {
+                  "direction": "in",
+                  "text": "CHALLENGE ticket TKT-7788 nonce N-8844",
+                  "parsed": null,
+                  "line_number": 3,
+                  "metadata": {
+                    "timestamp": "00:00:03",
+                    "source": "EDGE",
+                    "destination": "CLIENT"
+                  }
+                },
+                {
+                  "direction": "out",
+                  "text": "RESPONSE proof P-ABCD ticket TKT-7788",
+                  "parsed": null,
+                  "line_number": 4,
+                  "metadata": {
+                    "timestamp": "00:00:04",
+                    "source": "CLIENT",
+                    "destination": "EDGE"
+                  }
+                },
+                {
+                  "direction": "in",
+                  "text": "ACK session_id SID-120",
+                  "parsed": null,
+                  "line_number": 5,
+                  "metadata": {
+                    "timestamp": "00:00:05",
+                    "source": "EDGE",
+                    "destination": "CLIENT"
+                  }
+                },
+                {
+                  "direction": "out",
+                  "text": "CLIENTHELLO device cam-22 firmware 4.3",
+                  "parsed": null,
+                  "line_number": 6,
+                  "metadata": {
+                    "timestamp": "00:01:11",
+                    "source": "CLIENT",
+                    "destination": "EDGE"
+                  }
+                },
+                {
+                  "direction": "in",
+                  "text": "SERVERHELLO profile resume-v1",
+                  "parsed": null,
+                  "line_number": 7,
+                  "metadata": {
+                    "timestamp": "00:01:12",
+                    "source": "EDGE",
+                    "destination": "CLIENT"
+                  }
+                },
+                {
+                  "direction": "in",
+                  "text": "CHALLENGE ticket TKT-7788 nonce N-8844",
+                  "parsed": null,
+                  "line_number": 8,
+                  "metadata": {
+                    "timestamp": "00:01:13",
+                    "source": "EDGE",
+                    "destination": "CLIENT"
+                  }
+                },
+                {
+                  "direction": "out",
+                  "text": "RESPONSE proof P-ABCD ticket TKT-7788",
+                  "parsed": null,
+                  "line_number": 9,
+                  "metadata": {
+                    "timestamp": "00:01:14",
+                    "source": "CLIENT",
+                    "destination": "EDGE"
+                  }
+                },
+                {
+                  "direction": "in",
+                  "text": "ACK session_id SID-120",
+                  "parsed": null,
+                  "line_number": 10,
+                  "metadata": {
+                    "timestamp": "00:01:15",
+                    "source": "EDGE",
+                    "destination": "CLIENT"
+                  }
+                }
+              ],
+              "metadata": {}
+            },
+            {
+              "evidence_id": "evi-c00fd5a174b9",
+              "kind": "protocol.parser_summary",
+              "location": null,
+              "summary": "Protocol transcript summary and extracted indicators.",
+              "raw_value": {
+                "message_count": 10,
+                "input_messages": 4,
+                "output_messages": 6,
+                "indicators": {
+                  "challenge": true,
+                  "ticket": true,
+                  "nonce": true,
+                  "proof": true,
+                  "session_id": true
+                },
+                "message_shapes": {
+                  "text:32": 6,
+                  "text:29": 2,
+                  "text:22": 2
+                },
+                "phase_counts": {
+                  "hello": 4,
+                  "challenge": 2,
+                  "response": 2,
+                  "ack": 2
+                },
+                "handshake_style": "challenge-response",
+                "handshake_complete": true
+              },
+              "metadata": {}
+            },
+            {
+              "evidence_id": "evi-0a0148e739db",
+              "kind": "protocol.state_tracking",
+              "location": null,
+              "summary": "Inferred protocol phases and state transitions.",
+              "raw_value": {
+                "phase_sequence": [
+                  "hello",
+                  "hello",
+                  "challenge",
+                  "response",
+                  "ack",
+                  "hello",
+                  "hello",
+                  "challenge",
+                  "response",
+                  "ack"
+                ],
+                "transitions": [
+                  "hello->hello",
+                  "hello->challenge",
+                  "challenge->response",
+                  "response->ack",
+                  "ack->hello",
+                  "hello->hello",
+                  "hello->challenge",
+                  "challenge->response",
+                  "response->ack"
+                ],
+                "transition_counts": {
+                  "hello->hello": 2,
+                  "hello->challenge": 2,
+                  "challenge->response": 2,
+                  "response->ack": 2,
+                  "ack->hello": 1
+                },
+                "loop_count": 4
+              },
+              "metadata": {}
+            },
+            {
+              "evidence_id": "evi-4aae45a778c5",
+              "kind": "protocol.challenge_indicators",
+              "location": null,
+              "summary": "Challenge-like fields were extracted from transcript content.",
+              "raw_value": [
+                {
+                  "challenge": "ticket",
+                  "ticket": "TKT-7788",
+                  "nonce": "N-8844"
+                },
+                {
+                  "proof": "P-ABCD",
+                  "ticket": "TKT-7788"
+                },
+                {
+                  "session_id": "SID-120"
+                },
+                {
+                  "challenge": "ticket",
+                  "ticket": "TKT-7788",
+                  "nonce": "N-8844"
+                },
+                {
+                  "proof": "P-ABCD",
+                  "ticket": "TKT-7788"
+                },
+                {
+                  "session_id": "SID-120"
+                }
+              ],
+              "metadata": {}
+            }
+          ],
+          "metadata": {
+            "rule_id": "PROTO-003",
+            "repeated_challenge_value_count": 5
+          }
+        },
+        {
+          "finding_id": "find-4ec6beb3371d",
+          "title": "Repeated protocol phase loop observed",
+          "description": "The inferred state machine revisits the same transition patterns multiple times, which can indicate retries, loops, or replay-prone behavior.",
+          "severity": "medium",
+          "confidence": 0.78,
+          "analyzer": "protocol",
+          "recommendation": "Review whether repeated state transitions are expected for retries or whether challenge/response material is being reused across attempts.",
+          "evidence": [
+            {
+              "evidence_id": "evi-38663fa76500",
+              "kind": "protocol.transcript",
+              "location": null,
+              "summary": "Normalized protocol transcript available for downstream rules.",
+              "raw_value": [
+                {
+                  "direction": "out",
+                  "text": "CLIENTHELLO device cam-22 firmware 4.3",
+                  "parsed": null,
+                  "line_number": 1,
+                  "metadata": {
+                    "timestamp": "00:00:01",
+                    "source": "CLIENT",
+                    "destination": "EDGE"
+                  }
+                },
+                {
+                  "direction": "in",
+                  "text": "SERVERHELLO profile resume-v1",
+                  "parsed": null,
+                  "line_number": 2,
+                  "metadata": {
+                    "timestamp": "00:00:02",
+                    "source": "EDGE",
+                    "destination": "CLIENT"
+                  }
+                },
+                {
+                  "direction": "in",
+                  "text": "CHALLENGE ticket TKT-7788 nonce N-8844",
+                  "parsed": null,
+                  "line_number": 3,
+                  "metadata": {
+                    "timestamp": "00:00:03",
+                    "source": "EDGE",
+                    "destination": "CLIENT"
+                  }
+                },
+                {
+                  "direction": "out",
+                  "text": "RESPONSE proof P-ABCD ticket TKT-7788",
+                  "parsed": null,
+                  "line_number": 4,
+                  "metadata": {
+                    "timestamp": "00:00:04",
+                    "source": "CLIENT",
+                    "destination": "EDGE"
+                  }
+                },
+                {
+                  "direction": "in",
+                  "text": "ACK session_id SID-120",
+                  "parsed": null,
+                  "line_number": 5,
+                  "metadata": {
+                    "timestamp": "00:00:05",
+                    "source": "EDGE",
+                    "destination": "CLIENT"
+                  }
+                },
+                {
+                  "direction": "out",
+                  "text": "CLIENTHELLO device cam-22 firmware 4.3",
+                  "parsed": null,
+                  "line_number": 6,
+                  "metadata": {
+                    "timestamp": "00:01:11",
+                    "source": "CLIENT",
+                    "destination": "EDGE"
+                  }
+                },
+                {
+                  "direction": "in",
+                  "text": "SERVERHELLO profile resume-v1",
+                  "parsed": null,
+                  "line_number": 7,
+                  "metadata": {
+                    "timestamp": "00:01:12",
+                    "source": "EDGE",
+                    "destination": "CLIENT"
+                  }
+                },
+                {
+                  "direction": "in",
+                  "text": "CHALLENGE ticket TKT-7788 nonce N-8844",
+                  "parsed": null,
+                  "line_number": 8,
+                  "metadata": {
+                    "timestamp": "00:01:13",
+                    "source": "EDGE",
+                    "destination": "CLIENT"
+                  }
+                },
+                {
+                  "direction": "out",
+                  "text": "RESPONSE proof P-ABCD ticket TKT-7788",
+                  "parsed": null,
+                  "line_number": 9,
+                  "metadata": {
+                    "timestamp": "00:01:14",
+                    "source": "CLIENT",
+                    "destination": "EDGE"
+                  }
+                },
+                {
+                  "direction": "in",
+                  "text": "ACK session_id SID-120",
+                  "parsed": null,
+                  "line_number": 10,
+                  "metadata": {
+                    "timestamp": "00:01:15",
+                    "source": "EDGE",
+                    "destination": "CLIENT"
+                  }
+                }
+              ],
+              "metadata": {}
+            },
+            {
+              "evidence_id": "evi-c00fd5a174b9",
+              "kind": "protocol.parser_summary",
+              "location": null,
+              "summary": "Protocol transcript summary and extracted indicators.",
+              "raw_value": {
+                "message_count": 10,
+                "input_messages": 4,
+                "output_messages": 6,
+                "indicators": {
+                  "challenge": true,
+                  "ticket": true,
+                  "nonce": true,
+                  "proof": true,
+                  "session_id": true
+                },
+                "message_shapes": {
+                  "text:32": 6,
+                  "text:29": 2,
+                  "text:22": 2
+                },
+                "phase_counts": {
+                  "hello": 4,
+                  "challenge": 2,
+                  "response": 2,
+                  "ack": 2
+                },
+                "handshake_style": "challenge-response",
+                "handshake_complete": true
+              },
+              "metadata": {}
+            },
+            {
+              "evidence_id": "evi-0a0148e739db",
+              "kind": "protocol.state_tracking",
+              "location": null,
+              "summary": "Inferred protocol phases and state transitions.",
+              "raw_value": {
+                "phase_sequence": [
+                  "hello",
+                  "hello",
+                  "challenge",
+                  "response",
+                  "ack",
+                  "hello",
+                  "hello",
+                  "challenge",
+                  "response",
+                  "ack"
+                ],
+                "transitions": [
+                  "hello->hello",
+                  "hello->challenge",
+                  "challenge->response",
+                  "response->ack",
+                  "ack->hello",
+                  "hello->hello",
+                  "hello->challenge",
+                  "challenge->response",
+                  "response->ack"
+                ],
+                "transition_counts": {
+                  "hello->hello": 2,
+                  "hello->challenge": 2,
+                  "challenge->response": 2,
+                  "response->ack": 2,
+                  "ack->hello": 1
+                },
+                "loop_count": 4
+              },
+              "metadata": {}
+            }
+          ],
+          "metadata": {
+            "rule_id": "PROTO-005",
+            "phase_loop_count": 4
+          }
+        }
+      ],
+      "metrics": {
+        "message_count": 10,
+        "script_step_count": 0,
+        "challenge_indicator_count": 6,
+        "repeated_response_count": 3,
+        "repeated_response_ratio": 0.5,
+        "unique_response_count": 3,
+        "repeated_challenge_value_count": 5,
+        "phase_counts": {
+          "hello": 4,
+          "challenge": 2,
+          "response": 2,
+          "ack": 2
+        },
+        "phase_loop_count": 4,
+        "state_transition_count": 9,
+        "handshake_detected": true,
+        "handshake_style": "challenge-response",
+        "handshake_complete": true
+      },
+      "metadata": {
+        "status": "migrated-phase4.3",
+        "transcript_entries": 10
+      }
+    }
+  ],
+  "correlation_result": {
+    "summary": "No cross-module relationships were strong enough to elevate risk posture.",
+    "combined_findings": [],
+    "relationships": [],
+    "risk_posture": "limited-signals"
+  },
+  "generated_at": "2026-03-14T22:31:45.248107+00:00",
+  "tool_version": "0.2.0"
+}

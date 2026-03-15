@@ -1,0 +1,9 @@
+{
+  "enable_plugins": true,
+  "plugins": {
+    "enabled": [
+      "json-lines",
+      "finding-tags"
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "profile": "strict",
+  "rule_policy": {
+    "disabled_rule_ids": []
+  },
+  "io": {
+    "recursive": true
+  }
+}

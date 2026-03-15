@@ -1,0 +1,10 @@
+[00:00:01] CLIENT -> EDGE : CLIENTHELLO device cam-22 firmware 4.3
+[00:00:02] EDGE -> CLIENT : SERVERHELLO profile resume-v1
+[00:00:03] EDGE -> CLIENT : CHALLENGE ticket TKT-7788 nonce N-8844
+[00:00:04] CLIENT -> EDGE : RESPONSE proof P-ABCD ticket TKT-7788
+[00:00:05] EDGE -> CLIENT : ACK session_id SID-120
+[00:01:11] CLIENT -> EDGE : CLIENTHELLO device cam-22 firmware 4.3
+[00:01:12] EDGE -> CLIENT : SERVERHELLO profile resume-v1
+[00:01:13] EDGE -> CLIENT : CHALLENGE ticket TKT-7788 nonce N-8844
+[00:01:14] CLIENT -> EDGE : RESPONSE proof P-ABCD ticket TKT-7788
+[00:01:15] EDGE -> CLIENT : ACK session_id SID-120

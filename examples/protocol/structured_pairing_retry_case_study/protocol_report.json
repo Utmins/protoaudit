@@ -1,0 +1,1430 @@
+{
+  "artifacts": [
+    {
+      "artifact_id": "art-a55adfba78e2",
+      "artifact_type": "protocol_trace",
+      "source_path": "examples/protocol/structured_pairing_retry_case_study/script.json",
+      "content": "{\n  \"steps\": [\n    {\n      \"action\": \"send\",\n      \"data\": {\n        \"type\": \"ClientHello\",\n        \"device\": \"sensor-17\",\n        \"fw\": \"1.8.2\"\n      }\n    },\n    {\n      \"action\": \"recv\",\n      \"expect\": {\n        \"type\": \"ServerHello\",\n        \"profile\": \"pairing-v2\"\n      }\n    },\n    {\n      \"action\": \"recv\",\n      \"expect\": {\n        \"challenge\": \"PAIR-4461\",\n        \"token\": \"PAIR-4461\",\n        \"nonce\": \"N-3311\"\n      }\n    },\n    {\n      \"action\": \"send\",\n      \"data\": {\n        \"proof\": \"sig:8AA1\",\n        \"token\": \"PAIR-4461\"\n      }\n    },\n    {\n      \"action\": \"recv\",\n      \"expect\": {\n        \"status\": \"RETRY\",\n        \"reason\": \"uplink-delay\"\n      }\n    },\n    {\n      \"action\": \"send\",\n      \"data\": {\n        \"type\": \"ClientHello\",\n        \"device\": \"sensor-17\",\n        \"resume\": true\n      }\n    },\n    {\n      \"action\": \"recv\",\n      \"expect\": {\n        \"type\": \"ServerHello\",\n        \"profile\": \"pairing-v2\"\n      }\n    },\n    {\n      \"action\": \"recv\",\n      \"expect\": {\n        \"challenge\": \"PAIR-4461\",\n        \"token\": \"PAIR-4461\",\n        \"nonce\": \"N-3311\"\n      }\n    },\n    {\n      \"action\": \"send\",\n      \"data\": {\n        \"proof\": \"sig:8AA1\",\n        \"token\": \"PAIR-4461\"\n      }\n    },\n    {\n      \"action\": \"recv\",\n      \"expect\": {\n        \"status\": \"RETRY\",\n        \"reason\": \"uplink-delay\"\n      }\n    }\n  ]\n}",
+      "metadata": {
+        "filename": "script.json",
+        "suffix": ".json",
+        "size_bytes": 1352,
+        "line_count": 78,
+        "looks_like_transcript": false,
+        "parsed": {
+          "steps": [
+            {
+              "action": "send",
+              "data": {
+                "type": "ClientHello",
+                "device": "sensor-17",
+                "fw": "1.8.2"
+              }
+            },
+            {
+              "action": "recv",
+              "expect": {
+                "type": "ServerHello",
+                "profile": "pairing-v2"
+              }
+            },
+            {
+              "action": "recv",
+              "expect": {
+                "challenge": "PAIR-4461",
+                "token": "PAIR-4461",
+                "nonce": "N-3311"
+              }
+            },
+            {
+              "action": "send",
+              "data": {
+                "proof": "sig:8AA1",
+                "token": "PAIR-4461"
+              }
+            },
+            {
+              "action": "recv",
+              "expect": {
+                "status": "RETRY",
+                "reason": "uplink-delay"
+              }
+            },
+            {
+              "action": "send",
+              "data": {
+                "type": "ClientHello",
+                "device": "sensor-17",
+                "resume": true
+              }
+            },
+            {
+              "action": "recv",
+              "expect": {
+                "type": "ServerHello",
+                "profile": "pairing-v2"
+              }
+            },
+            {
+              "action": "recv",
+              "expect": {
+                "challenge": "PAIR-4461",
+                "token": "PAIR-4461",
+                "nonce": "N-3311"
+              }
+            },
+            {
+              "action": "send",
+              "data": {
+                "proof": "sig:8AA1",
+                "token": "PAIR-4461"
+              }
+            },
+            {
+              "action": "recv",
+              "expect": {
+                "status": "RETRY",
+                "reason": "uplink-delay"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "analysis_results": [
+    {
+      "analyzer_name": "protocol",
+      "artifact": {
+        "artifact_id": "art-a55adfba78e2",
+        "artifact_type": "protocol_trace",
+        "source_path": "examples/protocol/structured_pairing_retry_case_study/script.json",
+        "content": "{\n  \"steps\": [\n    {\n      \"action\": \"send\",\n      \"data\": {\n        \"type\": \"ClientHello\",\n        \"device\": \"sensor-17\",\n        \"fw\": \"1.8.2\"\n      }\n    },\n    {\n      \"action\": \"recv\",\n      \"expect\": {\n        \"type\": \"ServerHello\",\n        \"profile\": \"pairing-v2\"\n      }\n    },\n    {\n      \"action\": \"recv\",\n      \"expect\": {\n        \"challenge\": \"PAIR-4461\",\n        \"token\": \"PAIR-4461\",\n        \"nonce\": \"N-3311\"\n      }\n    },\n    {\n      \"action\": \"send\",\n      \"data\": {\n        \"proof\": \"sig:8AA1\",\n        \"token\": \"PAIR-4461\"\n      }\n    },\n    {\n      \"action\": \"recv\",\n      \"expect\": {\n        \"status\": \"RETRY\",\n        \"reason\": \"uplink-delay\"\n      }\n    },\n    {\n      \"action\": \"send\",\n      \"data\": {\n        \"type\": \"ClientHello\",\n        \"device\": \"sensor-17\",\n        \"resume\": true\n      }\n    },\n    {\n      \"action\": \"recv\",\n      \"expect\": {\n        \"type\": \"ServerHello\",\n        \"profile\": \"pairing-v2\"\n      }\n    },\n    {\n      \"action\": \"recv\",\n      \"expect\": {\n        \"challenge\": \"PAIR-4461\",\n        \"token\": \"PAIR-4461\",\n        \"nonce\": \"N-3311\"\n      }\n    },\n    {\n      \"action\": \"send\",\n      \"data\": {\n        \"proof\": \"sig:8AA1\",\n        \"token\": \"PAIR-4461\"\n      }\n    },\n    {\n      \"action\": \"recv\",\n      \"expect\": {\n        \"status\": \"RETRY\",\n        \"reason\": \"uplink-delay\"\n      }\n    }\n  ]\n}",
+        "metadata": {
+          "filename": "script.json",
+          "suffix": ".json",
+          "size_bytes": 1352,
+          "line_count": 78,
+          "looks_like_transcript": false,
+          "parsed": {
+            "steps": [
+              {
+                "action": "send",
+                "data": {
+                  "type": "ClientHello",
+                  "device": "sensor-17",
+                  "fw": "1.8.2"
+                }
+              },
+              {
+                "action": "recv",
+                "expect": {
+                  "type": "ServerHello",
+                  "profile": "pairing-v2"
+                }
+              },
+              {
+                "action": "recv",
+                "expect": {
+                  "challenge": "PAIR-4461",
+                  "token": "PAIR-4461",
+                  "nonce": "N-3311"
+                }
+              },
+              {
+                "action": "send",
+                "data": {
+                  "proof": "sig:8AA1",
+                  "token": "PAIR-4461"
+                }
+              },
+              {
+                "action": "recv",
+                "expect": {
+                  "status": "RETRY",
+                  "reason": "uplink-delay"
+                }
+              },
+              {
+                "action": "send",
+                "data": {
+                  "type": "ClientHello",
+                  "device": "sensor-17",
+                  "resume": true
+                }
+              },
+              {
+                "action": "recv",
+                "expect": {
+                  "type": "ServerHello",
+                  "profile": "pairing-v2"
+                }
+              },
+              {
+                "action": "recv",
+                "expect": {
+                  "challenge": "PAIR-4461",
+                  "token": "PAIR-4461",
+                  "nonce": "N-3311"
+                }
+              },
+              {
+                "action": "send",
+                "data": {
+                  "proof": "sig:8AA1",
+                  "token": "PAIR-4461"
+                }
+              },
+              {
+                "action": "recv",
+                "expect": {
+                  "status": "RETRY",
+                  "reason": "uplink-delay"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "summary": "Processed 10 protocol messages; extracted 4 challenge-like indicators; observed 5 repeated server responses; detected 4 repeated challenge-like values; inferred challenge-response handshake; handshake incomplete.",
+      "evidence": [
+        {
+          "evidence_id": "evi-ebdd4226edc8",
+          "kind": "protocol.transcript",
+          "location": null,
+          "summary": "Normalized protocol transcript available for downstream rules.",
+          "raw_value": [
+            {
+              "direction": "out",
+              "text": "{\"type\": \"ClientHello\", \"device\": \"sensor-17\", \"fw\": \"1.8.2\"}",
+              "parsed": {
+                "type": "ClientHello",
+                "device": "sensor-17",
+                "fw": "1.8.2"
+              },
+              "step": 1,
+              "action": "send"
+            },
+            {
+              "direction": "in",
+              "text": "",
+              "parsed": {
+                "type": "ServerHello",
+                "profile": "pairing-v2"
+              },
+              "step": 2,
+              "action": "recv"
+            },
+            {
+              "direction": "in",
+              "text": "",
+              "parsed": {
+                "challenge": "PAIR-4461",
+                "token": "PAIR-4461",
+                "nonce": "N-3311"
+              },
+              "step": 3,
+              "action": "recv"
+            },
+            {
+              "direction": "out",
+              "text": "{\"proof\": \"sig:8AA1\", \"token\": \"PAIR-4461\"}",
+              "parsed": {
+                "proof": "sig:8AA1",
+                "token": "PAIR-4461"
+              },
+              "step": 4,
+              "action": "send"
+            },
+            {
+              "direction": "in",
+              "text": "",
+              "parsed": {
+                "status": "RETRY",
+                "reason": "uplink-delay"
+              },
+              "step": 5,
+              "action": "recv"
+            },
+            {
+              "direction": "out",
+              "text": "{\"type\": \"ClientHello\", \"device\": \"sensor-17\", \"resume\": true}",
+              "parsed": {
+                "type": "ClientHello",
+                "device": "sensor-17",
+                "resume": true
+              },
+              "step": 6,
+              "action": "send"
+            },
+            {
+              "direction": "in",
+              "text": "",
+              "parsed": {
+                "type": "ServerHello",
+                "profile": "pairing-v2"
+              },
+              "step": 7,
+              "action": "recv"
+            },
+            {
+              "direction": "in",
+              "text": "",
+              "parsed": {
+                "challenge": "PAIR-4461",
+                "token": "PAIR-4461",
+                "nonce": "N-3311"
+              },
+              "step": 8,
+              "action": "recv"
+            },
+            {
+              "direction": "out",
+              "text": "{\"proof\": \"sig:8AA1\", \"token\": \"PAIR-4461\"}",
+              "parsed": {
+                "proof": "sig:8AA1",
+                "token": "PAIR-4461"
+              },
+              "step": 9,
+              "action": "send"
+            },
+            {
+              "direction": "in",
+              "text": "",
+              "parsed": {
+                "status": "RETRY",
+                "reason": "uplink-delay"
+              },
+              "step": 10,
+              "action": "recv"
+            }
+          ],
+          "metadata": {}
+        },
+        {
+          "evidence_id": "evi-98fcc778739a",
+          "kind": "protocol.parser_summary",
+          "location": null,
+          "summary": "Protocol transcript summary and extracted indicators.",
+          "raw_value": {
+            "message_count": 10,
+            "input_messages": 4,
+            "output_messages": 6,
+            "indicators": {
+              "challenge": true,
+              "token": true,
+              "nonce": true,
+              "proof": true
+            },
+            "message_shapes": {
+              "json:device,fw,type": 1,
+              "json:profile,type": 2,
+              "json:challenge,nonce,token": 2,
+              "json:proof,token": 2,
+              "json:reason,status": 2,
+              "json:device,resume,type": 1
+            },
+            "phase_counts": {
+              "hello": 4,
+              "challenge": 2,
+              "response": 2,
+              "data": 2
+            },
+            "handshake_style": "challenge-response",
+            "handshake_complete": false
+          },
+          "metadata": {}
+        },
+        {
+          "evidence_id": "evi-6d2a9e9b8ed9",
+          "kind": "protocol.state_tracking",
+          "location": null,
+          "summary": "Inferred protocol phases and state transitions.",
+          "raw_value": {
+            "phase_sequence": [
+              "hello",
+              "hello",
+              "challenge",
+              "response",
+              "data",
+              "hello",
+              "hello",
+              "challenge",
+              "response",
+              "data"
+            ],
+            "transitions": [
+              "hello->hello",
+              "hello->challenge",
+              "challenge->response",
+              "response->data",
+              "data->hello",
+              "hello->hello",
+              "hello->challenge",
+              "challenge->response",
+              "response->data"
+            ],
+            "transition_counts": {
+              "hello->hello": 2,
+              "hello->challenge": 2,
+              "challenge->response": 2,
+              "response->data": 2,
+              "data->hello": 1
+            },
+            "loop_count": 4
+          },
+          "metadata": {}
+        },
+        {
+          "evidence_id": "evi-4bad0ab27807",
+          "kind": "protocol.script",
+          "location": null,
+          "summary": "Input artifact contains a structured protocol script.",
+          "raw_value": {
+            "step_count": 10
+          },
+          "metadata": {}
+        },
+        {
+          "evidence_id": "evi-54012f4632ad",
+          "kind": "protocol.challenge_indicators",
+          "location": null,
+          "summary": "Challenge-like fields were extracted from transcript content.",
+          "raw_value": [
+            {
+              "challenge": "PAIR-4461",
+              "token": "PAIR-4461",
+              "nonce": "N-3311"
+            },
+            {
+              "proof": "sig:8AA1",
+              "token": "PAIR-4461"
+            },
+            {
+              "challenge": "PAIR-4461",
+              "token": "PAIR-4461",
+              "nonce": "N-3311"
+            },
+            {
+              "proof": "sig:8AA1",
+              "token": "PAIR-4461"
+            }
+          ],
+          "metadata": {}
+        },
+        {
+          "evidence_id": "evi-97858c8d1ca3",
+          "kind": "protocol.repeated_responses",
+          "location": null,
+          "summary": "Repeated inbound responses were observed.",
+          "raw_value": {
+            "examples": [
+              ""
+            ],
+            "count": 5
+          },
+          "metadata": {}
+        },
+        {
+          "evidence_id": "evi-e1c3204a8dcb",
+          "kind": "protocol.repeated_challenge_values",
+          "location": null,
+          "summary": "One or more challenge-like values repeated across messages.",
+          "raw_value": {
+            "challenge": "PAIR-4461",
+            "token": "PAIR-4461",
+            "nonce": "N-3311",
+            "proof": "sig:8AA1"
+          },
+          "metadata": {}
+        },
+        {
+          "evidence_id": "evi-6b1e34a0db5f",
+          "kind": "protocol.handshake",
+          "location": null,
+          "summary": "Handshake-like pattern inferred from transcript.",
+          "raw_value": {
+            "style": "challenge-response",
+            "complete": false
+          },
+          "metadata": {}
+        }
+      ],
+      "findings": [
+        {
+          "finding_id": "find-5cb3592377d8",
+          "title": "Challenge-like field observed",
+          "description": "The transcript or script contains challenge-like fields that may require replay-resistance and binding review.",
+          "severity": "info",
+          "confidence": 0.9,
+          "analyzer": "protocol",
+          "recommendation": "Review challenge generation, binding, and nonce lifecycle assumptions in the protocol flow.",
+          "evidence": [
+            {
+              "evidence_id": "evi-ebdd4226edc8",
+              "kind": "protocol.transcript",
+              "location": null,
+              "summary": "Normalized protocol transcript available for downstream rules.",
+              "raw_value": [
+                {
+                  "direction": "out",
+                  "text": "{\"type\": \"ClientHello\", \"device\": \"sensor-17\", \"fw\": \"1.8.2\"}",
+                  "parsed": {
+                    "type": "ClientHello",
+                    "device": "sensor-17",
+                    "fw": "1.8.2"
+                  },
+                  "step": 1,
+                  "action": "send"
+                },
+                {
+                  "direction": "in",
+                  "text": "",
+                  "parsed": {
+                    "type": "ServerHello",
+                    "profile": "pairing-v2"
+                  },
+                  "step": 2,
+                  "action": "recv"
+                },
+                {
+                  "direction": "in",
+                  "text": "",
+                  "parsed": {
+                    "challenge": "PAIR-4461",
+                    "token": "PAIR-4461",
+                    "nonce": "N-3311"
+                  },
+                  "step": 3,
+                  "action": "recv"
+                },
+                {
+                  "direction": "out",
+                  "text": "{\"proof\": \"sig:8AA1\", \"token\": \"PAIR-4461\"}",
+                  "parsed": {
+                    "proof": "sig:8AA1",
+                    "token": "PAIR-4461"
+                  },
+                  "step": 4,
+                  "action": "send"
+                },
+                {
+                  "direction": "in",
+                  "text": "",
+                  "parsed": {
+                    "status": "RETRY",
+                    "reason": "uplink-delay"
+                  },
+                  "step": 5,
+                  "action": "recv"
+                },
+                {
+                  "direction": "out",
+                  "text": "{\"type\": \"ClientHello\", \"device\": \"sensor-17\", \"resume\": true}",
+                  "parsed": {
+                    "type": "ClientHello",
+                    "device": "sensor-17",
+                    "resume": true
+                  },
+                  "step": 6,
+                  "action": "send"
+                },
+                {
+                  "direction": "in",
+                  "text": "",
+                  "parsed": {
+                    "type": "ServerHello",
+                    "profile": "pairing-v2"
+                  },
+                  "step": 7,
+                  "action": "recv"
+                },
+                {
+                  "direction": "in",
+                  "text": "",
+                  "parsed": {
+                    "challenge": "PAIR-4461",
+                    "token": "PAIR-4461",
+                    "nonce": "N-3311"
+                  },
+                  "step": 8,
+                  "action": "recv"
+                },
+                {
+                  "direction": "out",
+                  "text": "{\"proof\": \"sig:8AA1\", \"token\": \"PAIR-4461\"}",
+                  "parsed": {
+                    "proof": "sig:8AA1",
+                    "token": "PAIR-4461"
+                  },
+                  "step": 9,
+                  "action": "send"
+                },
+                {
+                  "direction": "in",
+                  "text": "",
+                  "parsed": {
+                    "status": "RETRY",
+                    "reason": "uplink-delay"
+                  },
+                  "step": 10,
+                  "action": "recv"
+                }
+              ],
+              "metadata": {}
+            },
+            {
+              "evidence_id": "evi-98fcc778739a",
+              "kind": "protocol.parser_summary",
+              "location": null,
+              "summary": "Protocol transcript summary and extracted indicators.",
+              "raw_value": {
+                "message_count": 10,
+                "input_messages": 4,
+                "output_messages": 6,
+                "indicators": {
+                  "challenge": true,
+                  "token": true,
+                  "nonce": true,
+                  "proof": true
+                },
+                "message_shapes": {
+                  "json:device,fw,type": 1,
+                  "json:profile,type": 2,
+                  "json:challenge,nonce,token": 2,
+                  "json:proof,token": 2,
+                  "json:reason,status": 2,
+                  "json:device,resume,type": 1
+                },
+                "phase_counts": {
+                  "hello": 4,
+                  "challenge": 2,
+                  "response": 2,
+                  "data": 2
+                },
+                "handshake_style": "challenge-response",
+                "handshake_complete": false
+              },
+              "metadata": {}
+            }
+          ],
+          "metadata": {
+            "rule_id": "PROTO-001",
+            "challenge_indicator_count": 4
+          }
+        },
+        {
+          "finding_id": "find-388d96a6a007",
+          "title": "Repeated protocol responses detected",
+          "description": "Repeated inbound responses may indicate deterministic server behavior, weak challenge handling, or limited transcript variability.",
+          "severity": "low",
+          "confidence": 0.8,
+          "analyzer": "protocol",
+          "recommendation": "Replay the same interaction under controlled conditions and verify whether deterministic responses are expected.",
+          "evidence": [
+            {
+              "evidence_id": "evi-ebdd4226edc8",
+              "kind": "protocol.transcript",
+              "location": null,
+              "summary": "Normalized protocol transcript available for downstream rules.",
+              "raw_value": [
+                {
+                  "direction": "out",
+                  "text": "{\"type\": \"ClientHello\", \"device\": \"sensor-17\", \"fw\": \"1.8.2\"}",
+                  "parsed": {
+                    "type": "ClientHello",
+                    "device": "sensor-17",
+                    "fw": "1.8.2"
+                  },
+                  "step": 1,
+                  "action": "send"
+                },
+                {
+                  "direction": "in",
+                  "text": "",
+                  "parsed": {
+                    "type": "ServerHello",
+                    "profile": "pairing-v2"
+                  },
+                  "step": 2,
+                  "action": "recv"
+                },
+                {
+                  "direction": "in",
+                  "text": "",
+                  "parsed": {
+                    "challenge": "PAIR-4461",
+                    "token": "PAIR-4461",
+                    "nonce": "N-3311"
+                  },
+                  "step": 3,
+                  "action": "recv"
+                },
+                {
+                  "direction": "out",
+                  "text": "{\"proof\": \"sig:8AA1\", \"token\": \"PAIR-4461\"}",
+                  "parsed": {
+                    "proof": "sig:8AA1",
+                    "token": "PAIR-4461"
+                  },
+                  "step": 4,
+                  "action": "send"
+                },
+                {
+                  "direction": "in",
+                  "text": "",
+                  "parsed": {
+                    "status": "RETRY",
+                    "reason": "uplink-delay"
+                  },
+                  "step": 5,
+                  "action": "recv"
+                },
+                {
+                  "direction": "out",
+                  "text": "{\"type\": \"ClientHello\", \"device\": \"sensor-17\", \"resume\": true}",
+                  "parsed": {
+                    "type": "ClientHello",
+                    "device": "sensor-17",
+                    "resume": true
+                  },
+                  "step": 6,
+                  "action": "send"
+                },
+                {
+                  "direction": "in",
+                  "text": "",
+                  "parsed": {
+                    "type": "ServerHello",
+                    "profile": "pairing-v2"
+                  },
+                  "step": 7,
+                  "action": "recv"
+                },
+                {
+                  "direction": "in",
+                  "text": "",
+                  "parsed": {
+                    "challenge": "PAIR-4461",
+                    "token": "PAIR-4461",
+                    "nonce": "N-3311"
+                  },
+                  "step": 8,
+                  "action": "recv"
+                },
+                {
+                  "direction": "out",
+                  "text": "{\"proof\": \"sig:8AA1\", \"token\": \"PAIR-4461\"}",
+                  "parsed": {
+                    "proof": "sig:8AA1",
+                    "token": "PAIR-4461"
+                  },
+                  "step": 9,
+                  "action": "send"
+                },
+                {
+                  "direction": "in",
+                  "text": "",
+                  "parsed": {
+                    "status": "RETRY",
+                    "reason": "uplink-delay"
+                  },
+                  "step": 10,
+                  "action": "recv"
+                }
+              ],
+              "metadata": {}
+            },
+            {
+              "evidence_id": "evi-98fcc778739a",
+              "kind": "protocol.parser_summary",
+              "location": null,
+              "summary": "Protocol transcript summary and extracted indicators.",
+              "raw_value": {
+                "message_count": 10,
+                "input_messages": 4,
+                "output_messages": 6,
+                "indicators": {
+                  "challenge": true,
+                  "token": true,
+                  "nonce": true,
+                  "proof": true
+                },
+                "message_shapes": {
+                  "json:device,fw,type": 1,
+                  "json:profile,type": 2,
+                  "json:challenge,nonce,token": 2,
+                  "json:proof,token": 2,
+                  "json:reason,status": 2,
+                  "json:device,resume,type": 1
+                },
+                "phase_counts": {
+                  "hello": 4,
+                  "challenge": 2,
+                  "response": 2,
+                  "data": 2
+                },
+                "handshake_style": "challenge-response",
+                "handshake_complete": false
+              },
+              "metadata": {}
+            }
+          ],
+          "metadata": {
+            "rule_id": "PROTO-002",
+            "repeated_response_ratio": 0.8333333333333334,
+            "threshold": 0.5
+          }
+        },
+        {
+          "finding_id": "find-eaea8e8c87c6",
+          "title": "Challenge-like values repeat across messages",
+          "description": "A value labeled as a challenge, nonce, token, or similar field appears to repeat across messages.",
+          "severity": "medium",
+          "confidence": 0.9,
+          "analyzer": "protocol",
+          "recommendation": "Validate freshness guarantees and confirm whether these fields are truly session-unique rather than labels for static identifiers.",
+          "evidence": [
+            {
+              "evidence_id": "evi-ebdd4226edc8",
+              "kind": "protocol.transcript",
+              "location": null,
+              "summary": "Normalized protocol transcript available for downstream rules.",
+              "raw_value": [
+                {
+                  "direction": "out",
+                  "text": "{\"type\": \"ClientHello\", \"device\": \"sensor-17\", \"fw\": \"1.8.2\"}",
+                  "parsed": {
+                    "type": "ClientHello",
+                    "device": "sensor-17",
+                    "fw": "1.8.2"
+                  },
+                  "step": 1,
+                  "action": "send"
+                },
+                {
+                  "direction": "in",
+                  "text": "",
+                  "parsed": {
+                    "type": "ServerHello",
+                    "profile": "pairing-v2"
+                  },
+                  "step": 2,
+                  "action": "recv"
+                },
+                {
+                  "direction": "in",
+                  "text": "",
+                  "parsed": {
+                    "challenge": "PAIR-4461",
+                    "token": "PAIR-4461",
+                    "nonce": "N-3311"
+                  },
+                  "step": 3,
+                  "action": "recv"
+                },
+                {
+                  "direction": "out",
+                  "text": "{\"proof\": \"sig:8AA1\", \"token\": \"PAIR-4461\"}",
+                  "parsed": {
+                    "proof": "sig:8AA1",
+                    "token": "PAIR-4461"
+                  },
+                  "step": 4,
+                  "action": "send"
+                },
+                {
+                  "direction": "in",
+                  "text": "",
+                  "parsed": {
+                    "status": "RETRY",
+                    "reason": "uplink-delay"
+                  },
+                  "step": 5,
+                  "action": "recv"
+                },
+                {
+                  "direction": "out",
+                  "text": "{\"type\": \"ClientHello\", \"device\": \"sensor-17\", \"resume\": true}",
+                  "parsed": {
+                    "type": "ClientHello",
+                    "device": "sensor-17",
+                    "resume": true
+                  },
+                  "step": 6,
+                  "action": "send"
+                },
+                {
+                  "direction": "in",
+                  "text": "",
+                  "parsed": {
+                    "type": "ServerHello",
+                    "profile": "pairing-v2"
+                  },
+                  "step": 7,
+                  "action": "recv"
+                },
+                {
+                  "direction": "in",
+                  "text": "",
+                  "parsed": {
+                    "challenge": "PAIR-4461",
+                    "token": "PAIR-4461",
+                    "nonce": "N-3311"
+                  },
+                  "step": 8,
+                  "action": "recv"
+                },
+                {
+                  "direction": "out",
+                  "text": "{\"proof\": \"sig:8AA1\", \"token\": \"PAIR-4461\"}",
+                  "parsed": {
+                    "proof": "sig:8AA1",
+                    "token": "PAIR-4461"
+                  },
+                  "step": 9,
+                  "action": "send"
+                },
+                {
+                  "direction": "in",
+                  "text": "",
+                  "parsed": {
+                    "status": "RETRY",
+                    "reason": "uplink-delay"
+                  },
+                  "step": 10,
+                  "action": "recv"
+                }
+              ],
+              "metadata": {}
+            },
+            {
+              "evidence_id": "evi-98fcc778739a",
+              "kind": "protocol.parser_summary",
+              "location": null,
+              "summary": "Protocol transcript summary and extracted indicators.",
+              "raw_value": {
+                "message_count": 10,
+                "input_messages": 4,
+                "output_messages": 6,
+                "indicators": {
+                  "challenge": true,
+                  "token": true,
+                  "nonce": true,
+                  "proof": true
+                },
+                "message_shapes": {
+                  "json:device,fw,type": 1,
+                  "json:profile,type": 2,
+                  "json:challenge,nonce,token": 2,
+                  "json:proof,token": 2,
+                  "json:reason,status": 2,
+                  "json:device,resume,type": 1
+                },
+                "phase_counts": {
+                  "hello": 4,
+                  "challenge": 2,
+                  "response": 2,
+                  "data": 2
+                },
+                "handshake_style": "challenge-response",
+                "handshake_complete": false
+              },
+              "metadata": {}
+            },
+            {
+              "evidence_id": "evi-6d2a9e9b8ed9",
+              "kind": "protocol.state_tracking",
+              "location": null,
+              "summary": "Inferred protocol phases and state transitions.",
+              "raw_value": {
+                "phase_sequence": [
+                  "hello",
+                  "hello",
+                  "challenge",
+                  "response",
+                  "data",
+                  "hello",
+                  "hello",
+                  "challenge",
+                  "response",
+                  "data"
+                ],
+                "transitions": [
+                  "hello->hello",
+                  "hello->challenge",
+                  "challenge->response",
+                  "response->data",
+                  "data->hello",
+                  "hello->hello",
+                  "hello->challenge",
+                  "challenge->response",
+                  "response->data"
+                ],
+                "transition_counts": {
+                  "hello->hello": 2,
+                  "hello->challenge": 2,
+                  "challenge->response": 2,
+                  "response->data": 2,
+                  "data->hello": 1
+                },
+                "loop_count": 4
+              },
+              "metadata": {}
+            },
+            {
+              "evidence_id": "evi-4bad0ab27807",
+              "kind": "protocol.script",
+              "location": null,
+              "summary": "Input artifact contains a structured protocol script.",
+              "raw_value": {
+                "step_count": 10
+              },
+              "metadata": {}
+            }
+          ],
+          "metadata": {
+            "rule_id": "PROTO-003",
+            "repeated_challenge_value_count": 4
+          }
+        },
+        {
+          "finding_id": "find-076225289c43",
+          "title": "Handshake-like flow appears incomplete",
+          "description": "The transcript contains a recognizable handshake pattern, but it does not appear to reach an acknowledgement or completion phase.",
+          "severity": "low",
+          "confidence": 0.76,
+          "analyzer": "protocol",
+          "recommendation": "Confirm whether the capture is truncated or whether the protocol genuinely permits partial handshakes without explicit completion.",
+          "evidence": [
+            {
+              "evidence_id": "evi-ebdd4226edc8",
+              "kind": "protocol.transcript",
+              "location": null,
+              "summary": "Normalized protocol transcript available for downstream rules.",
+              "raw_value": [
+                {
+                  "direction": "out",
+                  "text": "{\"type\": \"ClientHello\", \"device\": \"sensor-17\", \"fw\": \"1.8.2\"}",
+                  "parsed": {
+                    "type": "ClientHello",
+                    "device": "sensor-17",
+                    "fw": "1.8.2"
+                  },
+                  "step": 1,
+                  "action": "send"
+                },
+                {
+                  "direction": "in",
+                  "text": "",
+                  "parsed": {
+                    "type": "ServerHello",
+                    "profile": "pairing-v2"
+                  },
+                  "step": 2,
+                  "action": "recv"
+                },
+                {
+                  "direction": "in",
+                  "text": "",
+                  "parsed": {
+                    "challenge": "PAIR-4461",
+                    "token": "PAIR-4461",
+                    "nonce": "N-3311"
+                  },
+                  "step": 3,
+                  "action": "recv"
+                },
+                {
+                  "direction": "out",
+                  "text": "{\"proof\": \"sig:8AA1\", \"token\": \"PAIR-4461\"}",
+                  "parsed": {
+                    "proof": "sig:8AA1",
+                    "token": "PAIR-4461"
+                  },
+                  "step": 4,
+                  "action": "send"
+                },
+                {
+                  "direction": "in",
+                  "text": "",
+                  "parsed": {
+                    "status": "RETRY",
+                    "reason": "uplink-delay"
+                  },
+                  "step": 5,
+                  "action": "recv"
+                },
+                {
+                  "direction": "out",
+                  "text": "{\"type\": \"ClientHello\", \"device\": \"sensor-17\", \"resume\": true}",
+                  "parsed": {
+                    "type": "ClientHello",
+                    "device": "sensor-17",
+                    "resume": true
+                  },
+                  "step": 6,
+                  "action": "send"
+                },
+                {
+                  "direction": "in",
+                  "text": "",
+                  "parsed": {
+                    "type": "ServerHello",
+                    "profile": "pairing-v2"
+                  },
+                  "step": 7,
+                  "action": "recv"
+                },
+                {
+                  "direction": "in",
+                  "text": "",
+                  "parsed": {
+                    "challenge": "PAIR-4461",
+                    "token": "PAIR-4461",
+                    "nonce": "N-3311"
+                  },
+                  "step": 8,
+                  "action": "recv"
+                },
+                {
+                  "direction": "out",
+                  "text": "{\"proof\": \"sig:8AA1\", \"token\": \"PAIR-4461\"}",
+                  "parsed": {
+                    "proof": "sig:8AA1",
+                    "token": "PAIR-4461"
+                  },
+                  "step": 9,
+                  "action": "send"
+                },
+                {
+                  "direction": "in",
+                  "text": "",
+                  "parsed": {
+                    "status": "RETRY",
+                    "reason": "uplink-delay"
+                  },
+                  "step": 10,
+                  "action": "recv"
+                }
+              ],
+              "metadata": {}
+            },
+            {
+              "evidence_id": "evi-98fcc778739a",
+              "kind": "protocol.parser_summary",
+              "location": null,
+              "summary": "Protocol transcript summary and extracted indicators.",
+              "raw_value": {
+                "message_count": 10,
+                "input_messages": 4,
+                "output_messages": 6,
+                "indicators": {
+                  "challenge": true,
+                  "token": true,
+                  "nonce": true,
+                  "proof": true
+                },
+                "message_shapes": {
+                  "json:device,fw,type": 1,
+                  "json:profile,type": 2,
+                  "json:challenge,nonce,token": 2,
+                  "json:proof,token": 2,
+                  "json:reason,status": 2,
+                  "json:device,resume,type": 1
+                },
+                "phase_counts": {
+                  "hello": 4,
+                  "challenge": 2,
+                  "response": 2,
+                  "data": 2
+                },
+                "handshake_style": "challenge-response",
+                "handshake_complete": false
+              },
+              "metadata": {}
+            },
+            {
+              "evidence_id": "evi-6d2a9e9b8ed9",
+              "kind": "protocol.state_tracking",
+              "location": null,
+              "summary": "Inferred protocol phases and state transitions.",
+              "raw_value": {
+                "phase_sequence": [
+                  "hello",
+                  "hello",
+                  "challenge",
+                  "response",
+                  "data",
+                  "hello",
+                  "hello",
+                  "challenge",
+                  "response",
+                  "data"
+                ],
+                "transitions": [
+                  "hello->hello",
+                  "hello->challenge",
+                  "challenge->response",
+                  "response->data",
+                  "data->hello",
+                  "hello->hello",
+                  "hello->challenge",
+                  "challenge->response",
+                  "response->data"
+                ],
+                "transition_counts": {
+                  "hello->hello": 2,
+                  "hello->challenge": 2,
+                  "challenge->response": 2,
+                  "response->data": 2,
+                  "data->hello": 1
+                },
+                "loop_count": 4
+              },
+              "metadata": {}
+            }
+          ],
+          "metadata": {
+            "rule_id": "PROTO-004",
+            "handshake_style": "challenge-response"
+          }
+        },
+        {
+          "finding_id": "find-56c40e990dff",
+          "title": "Repeated protocol phase loop observed",
+          "description": "The inferred state machine revisits the same transition patterns multiple times, which can indicate retries, loops, or replay-prone behavior.",
+          "severity": "medium",
+          "confidence": 0.78,
+          "analyzer": "protocol",
+          "recommendation": "Review whether repeated state transitions are expected for retries or whether challenge/response material is being reused across attempts.",
+          "evidence": [
+            {
+              "evidence_id": "evi-ebdd4226edc8",
+              "kind": "protocol.transcript",
+              "location": null,
+              "summary": "Normalized protocol transcript available for downstream rules.",
+              "raw_value": [
+                {
+                  "direction": "out",
+                  "text": "{\"type\": \"ClientHello\", \"device\": \"sensor-17\", \"fw\": \"1.8.2\"}",
+                  "parsed": {
+                    "type": "ClientHello",
+                    "device": "sensor-17",
+                    "fw": "1.8.2"
+                  },
+                  "step": 1,
+                  "action": "send"
+                },
+                {
+                  "direction": "in",
+                  "text": "",
+                  "parsed": {
+                    "type": "ServerHello",
+                    "profile": "pairing-v2"
+                  },
+                  "step": 2,
+                  "action": "recv"
+                },
+                {
+                  "direction": "in",
+                  "text": "",
+                  "parsed": {
+                    "challenge": "PAIR-4461",
+                    "token": "PAIR-4461",
+                    "nonce": "N-3311"
+                  },
+                  "step": 3,
+                  "action": "recv"
+                },
+                {
+                  "direction": "out",
+                  "text": "{\"proof\": \"sig:8AA1\", \"token\": \"PAIR-4461\"}",
+                  "parsed": {
+                    "proof": "sig:8AA1",
+                    "token": "PAIR-4461"
+                  },
+                  "step": 4,
+                  "action": "send"
+                },
+                {
+                  "direction": "in",
+                  "text": "",
+                  "parsed": {
+                    "status": "RETRY",
+                    "reason": "uplink-delay"
+                  },
+                  "step": 5,
+                  "action": "recv"
+                },
+                {
+                  "direction": "out",
+                  "text": "{\"type\": \"ClientHello\", \"device\": \"sensor-17\", \"resume\": true}",
+                  "parsed": {
+                    "type": "ClientHello",
+                    "device": "sensor-17",
+                    "resume": true
+                  },
+                  "step": 6,
+                  "action": "send"
+                },
+                {
+                  "direction": "in",
+                  "text": "",
+                  "parsed": {
+                    "type": "ServerHello",
+                    "profile": "pairing-v2"
+                  },
+                  "step": 7,
+                  "action": "recv"
+                },
+                {
+                  "direction": "in",
+                  "text": "",
+                  "parsed": {
+                    "challenge": "PAIR-4461",
+                    "token": "PAIR-4461",
+                    "nonce": "N-3311"
+                  },
+                  "step": 8,
+                  "action": "recv"
+                },
+                {
+                  "direction": "out",
+                  "text": "{\"proof\": \"sig:8AA1\", \"token\": \"PAIR-4461\"}",
+                  "parsed": {
+                    "proof": "sig:8AA1",
+                    "token": "PAIR-4461"
+                  },
+                  "step": 9,
+                  "action": "send"
+                },
+                {
+                  "direction": "in",
+                  "text": "",
+                  "parsed": {
+                    "status": "RETRY",
+                    "reason": "uplink-delay"
+                  },
+                  "step": 10,
+                  "action": "recv"
+                }
+              ],
+              "metadata": {}
+            },
+            {
+              "evidence_id": "evi-98fcc778739a",
+              "kind": "protocol.parser_summary",
+              "location": null,
+              "summary": "Protocol transcript summary and extracted indicators.",
+              "raw_value": {
+                "message_count": 10,
+                "input_messages": 4,
+                "output_messages": 6,
+                "indicators": {
+                  "challenge": true,
+                  "token": true,
+                  "nonce": true,
+                  "proof": true
+                },
+                "message_shapes": {
+                  "json:device,fw,type": 1,
+                  "json:profile,type": 2,
+                  "json:challenge,nonce,token": 2,
+                  "json:proof,token": 2,
+                  "json:reason,status": 2,
+                  "json:device,resume,type": 1
+                },
+                "phase_counts": {
+                  "hello": 4,
+                  "challenge": 2,
+                  "response": 2,
+                  "data": 2
+                },
+                "handshake_style": "challenge-response",
+                "handshake_complete": false
+              },
+              "metadata": {}
+            },
+            {
+              "evidence_id": "evi-6d2a9e9b8ed9",
+              "kind": "protocol.state_tracking",
+              "location": null,
+              "summary": "Inferred protocol phases and state transitions.",
+              "raw_value": {
+                "phase_sequence": [
+                  "hello",
+                  "hello",
+                  "challenge",
+                  "response",
+                  "data",
+                  "hello",
+                  "hello",
+                  "challenge",
+                  "response",
+                  "data"
+                ],
+                "transitions": [
+                  "hello->hello",
+                  "hello->challenge",
+                  "challenge->response",
+                  "response->data",
+                  "data->hello",
+                  "hello->hello",
+                  "hello->challenge",
+                  "challenge->response",
+                  "response->data"
+                ],
+                "transition_counts": {
+                  "hello->hello": 2,
+                  "hello->challenge": 2,
+                  "challenge->response": 2,
+                  "response->data": 2,
+                  "data->hello": 1
+                },
+                "loop_count": 4
+              },
+              "metadata": {}
+            }
+          ],
+          "metadata": {
+            "rule_id": "PROTO-005",
+            "phase_loop_count": 4
+          }
+        }
+      ],
+      "metrics": {
+        "message_count": 10,
+        "script_step_count": 10,
+        "challenge_indicator_count": 4,
+        "repeated_response_count": 5,
+        "repeated_response_ratio": 0.8333333333333334,
+        "unique_response_count": 1,
+        "repeated_challenge_value_count": 4,
+        "phase_counts": {
+          "hello": 4,
+          "challenge": 2,
+          "response": 2,
+          "data": 2
+        },
+        "phase_loop_count": 4,
+        "state_transition_count": 9,
+        "handshake_detected": true,
+        "handshake_style": "challenge-response",
+        "handshake_complete": false
+      },
+      "metadata": {
+        "status": "migrated-phase4.3",
+        "transcript_entries": 10
+      }
+    }
+  ],
+  "correlation_result": {
+    "summary": "No cross-module relationships were strong enough to elevate risk posture.",
+    "combined_findings": [],
+    "relationships": [],
+    "risk_posture": "limited-signals"
+  },
+  "generated_at": "2026-03-14T22:31:45.250396+00:00",
+  "tool_version": "0.2.0"
+}

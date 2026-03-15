@@ -1,0 +1,8 @@
+{
+  "scheme_type": "aggregate_signature",
+  "proof_of_possession": false,
+  "accepts_untrusted_pubkeys": true,
+  "domain_separation": false,
+  "verifier_binds_participants": false,
+  "binds_message_context": false
+}

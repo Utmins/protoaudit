@@ -1,0 +1,10 @@
+[00:00:01] C -> S : CLIENT_HELLO version=1.0 client_id=mobile-17
+[00:00:02] S -> C : SERVER_HELLO realm=auth-gw-1
+[00:00:03] S -> C : CHALLENGE nonce=7A9F12 ticket=T-8841
+[00:00:04] C -> S : RESPONSE user=alice proof=8f31c9
+[00:00:05] S -> C : AUTH_RETRY reason=stale-proof
+[00:00:06] C -> S : CLIENT_HELLO version=1.0 client_id=mobile-17
+[00:00:07] S -> C : SERVER_HELLO realm=auth-gw-1
+[00:00:08] S -> C : CHALLENGE nonce=7A9F12 ticket=T-8841
+[00:00:09] C -> S : RESPONSE user=alice proof=8f31c9
+[00:00:10] S -> C : AUTH_RETRY reason=stale-proof

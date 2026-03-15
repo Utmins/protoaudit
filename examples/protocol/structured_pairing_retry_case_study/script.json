@@ -1,0 +1,78 @@
+{
+  "steps": [
+    {
+      "action": "send",
+      "data": {
+        "type": "ClientHello",
+        "device": "sensor-17",
+        "fw": "1.8.2"
+      }
+    },
+    {
+      "action": "recv",
+      "expect": {
+        "type": "ServerHello",
+        "profile": "pairing-v2"
+      }
+    },
+    {
+      "action": "recv",
+      "expect": {
+        "challenge": "PAIR-4461",
+        "token": "PAIR-4461",
+        "nonce": "N-3311"
+      }
+    },
+    {
+      "action": "send",
+      "data": {
+        "proof": "sig:8AA1",
+        "token": "PAIR-4461"
+      }
+    },
+    {
+      "action": "recv",
+      "expect": {
+        "status": "RETRY",
+        "reason": "uplink-delay"
+      }
+    },
+    {
+      "action": "send",
+      "data": {
+        "type": "ClientHello",
+        "device": "sensor-17",
+        "resume": true
+      }
+    },
+    {
+      "action": "recv",
+      "expect": {
+        "type": "ServerHello",
+        "profile": "pairing-v2"
+      }
+    },
+    {
+      "action": "recv",
+      "expect": {
+        "challenge": "PAIR-4461",
+        "token": "PAIR-4461",
+        "nonce": "N-3311"
+      }
+    },
+    {
+      "action": "send",
+      "data": {
+        "proof": "sig:8AA1",
+        "token": "PAIR-4461"
+      }
+    },
+    {
+      "action": "recv",
+      "expect": {
+        "status": "RETRY",
+        "reason": "uplink-delay"
+      }
+    }
+  ]
+}
