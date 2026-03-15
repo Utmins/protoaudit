@@ -1,26 +1,29 @@
-# Contributing
+# Contributing to ProtoAudit
 
-Thanks for contributing.
+Thank you for considering contributing to ProtoAudit.
 
-## Principles
+## Ways to contribute
 
-- keep the shared domain model coherent
-- do not let analyzer logic leak into CLI or reporting
-- prefer normalized findings over ad hoc text output
-- preserve the framework-first, toolkit-on-top architecture
+You can help improve ProtoAudit by:
 
-## Development setup
+- reporting bugs
+- proposing new protocol analysis ideas
+- improving documentation
+- adding new case studies
+- contributing analyzer modules
 
-```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -e .[dev]
-pytest
-```
+## Development guidelines
 
-## Pull request expectations
+1. Keep the tool lightweight and scriptable.
+2. Prefer readable code over complex abstractions.
+3. Focus on protocol behavior analysis rather than packet-level inspection.
+4. Ensure new features include example inputs or case studies.
 
-- clear scope
-- tests for meaningful logic changes
-- no silent architecture drift
-- update docs when interfaces change
+## Pull request process
+
+- Fork the repository
+- Create a feature branch
+- Submit a pull request with a clear explanation of the change
+- Include examples if applicable
+
+Small improvements and documentation updates are welcome.

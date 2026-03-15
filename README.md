@@ -59,6 +59,39 @@ pytest
 protoaudit analyze protocol examples/protocol/retry_loop_case_study/session.txt --profile strict
 ```
 
+## Try this first
+
+If you want a quick overview of what ProtoAudit detects, start with one of the included protocol case studies.
+
+Example:
+
+```bash
+protoaudit analyze protocol examples/protocol/retry_loop_case_study/session.txt --format markdown
+```
+
+This example demonstrates a retry-loop handshake pattern where challenge and response material repeat across protocol phases.
+
+ProtoAudit will detect patterns such as:
+
+- repeated challenge-like values
+- repeated proof or response artifacts
+- incomplete handshake flows
+- retry-loop protocol states
+
+To explore other scenarios:
+
+```bash
+protoaudit analyze protocol examples/protocol/cached_handshake_material_case_study/session.txt
+```
+
+or
+
+```bash
+protoaudit analyze protocol examples/protocol/structured_pairing_retry_case_study/pairing_script.json
+```
+
+These case studies simulate realistic protocol failure modes that ProtoAudit is designed to surface during protocol research and analysis.
+
 ## Example output
 
 ```text

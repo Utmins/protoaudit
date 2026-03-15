@@ -1,15 +1,21 @@
 # Security Policy
 
-This project is intended for defensive analysis, research, and protocol inspection.
+## Reporting security issues
+
+If you discover a security issue related to ProtoAudit, please report it responsibly.
+
+Do not open public GitHub issues for security vulnerabilities.
+
+Instead, contact the maintainer directly with:
+
+- a description of the issue
+- steps to reproduce the problem
+- potential impact
+
+Security reports will be reviewed and addressed as quickly as possible.
 
 ## Scope
 
-The repository focuses on:
-- protocol inspection
-- transcript analysis
-- defensive fuzzing support
-- cryptographic and randomness hygiene checks
+ProtoAudit is a research tool designed for protocol analysis. It does not operate as a network service and should not expose attack surfaces in normal usage.
 
-## Reporting issues
-
-Please report security issues responsibly and avoid public disclosure of sensitive findings until maintainers have had a chance to review them.
+Nevertheless, responsible disclosure is appreciated if issues are discovered.
