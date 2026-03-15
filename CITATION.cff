@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+title: ProtoAudit
+message: "If you use ProtoAudit in research or publications, please cite it using the following metadata."
+type: software
+authors:
+  - family-names: Kriukov
+    given-names: Pavel
+repository-code: https://github.com/<your-username>/ProtoAudit
+abstract: >
+  ProtoAudit is a research toolkit for protocol behavior analysis,
+  cryptographic metadata inspection, and randomness anomaly detection.
+keywords:
+  - protocol-analysis
+  - cybersecurity
+  - security-research
+  - cryptographic-analysis
+  - network-forensics
+license: MIT
