@@ -57,19 +57,17 @@ ProtoAudit is built as a modular analysis framework.
 
 Core components:
 
-- Analyzer modules
-    Individual analyzers inspect protocol transcripts for specific patterns
-    (protocol behavior, cryptographic metadata, randomness anomalies).
+  * Analyzer modules - Individual analyzers inspect protocol transcripts for specific patterns (protocol behavior, cryptographic metadata, randomness anomalies).
 
-- Rule engine
-    Findings are generated using rule-driven pattern detection.
+  * Rule engine - Findings are generated using rule-driven pattern detection.
 
-- Plugin system
-    Additional analyzers can be loaded dynamically.
+  * Plugin system - Additional analyzers can be loaded dynamically.
 
-- Reporting layer
-    Results can be exported in multiple formats:
-    console, JSON, Markdown, and HTML.
+  * Reporting layer - Results can be exported in multiple formats:
+      - console,
+      - JSON,
+      - Markdown,
+      - and HTML.
 
 This modular design allows researchers to extend ProtoAudit with new protocol analysis techniques.
 
