@@ -1,6 +1,6 @@
 # Quickstart
 
-Install and test:
+## 1. Install and verify
 
 ```bash
 python -m venv .venv
@@ -9,27 +9,41 @@ pip install -e .[dev]
 pytest
 ```
 
-Run a realistic protocol example:
+## 2. Run the most useful first example
 
 ```bash
-protoaudit analyze protocol examples/transcripts/sample_transcript.txt --profile strict
+protoaudit analyze protocol examples/protocol/retry_loop_case_study/session.txt --profile strict
 ```
 
-Parse the same transcript:
+What this gives you:
+
+- timestamped client/server transcript parsing
+- protocol phase inference
+- repeated challenge / response detection
+- incomplete-handshake reporting
+- retry-loop detection
+
+## 3. Parse the same transcript directly
 
 ```bash
-protoaudit transcript parse examples/transcripts/sample_transcript.txt
+protoaudit transcript parse examples/protocol/retry_loop_case_study/session.txt
 ```
 
-Use a config file:
+## 4. Try the structured protocol example
+
+```bash
+protoaudit analyze protocol examples/protocol/structured_pairing_retry_case_study/script.json --format markdown
+```
+
+## 5. Try config-driven analysis
 
 ```bash
 protoaudit --config examples/config.strict.json analyze protocol examples/transcripts/sample_transcript.txt
 ```
 
-## Plugin quick check
+## 6. Try plugin-enabled analysis
 
 ```bash
 protoaudit plugins list
-protoaudit --config examples/config.plugins.json analyze protocol examples/protocol/retry_loop_case_study/session.txt
+protoaudit --config examples/config.plugins.json analyze protocol examples/protocol/retry_loop_case_study/session.txt --format json
 ```

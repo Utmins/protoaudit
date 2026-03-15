@@ -4,63 +4,40 @@
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Status](https://img.shields.io/badge/status-research--tool-orange)
 
-ProtoAudit is a modular defensive framework for analyzing protocol behavior, cryptographic metadata, and randomness patterns — with practical utilities for transcript parsing, replay planning, fuzzing, extraction, and report rendering.
+ProtoAudit is a modular defensive framework for analyzing protocol behavior, cryptographic metadata, and randomness patterns. It combines transcript parsing, rule-driven findings, cross-analyzer correlation, and case-study driven examples in one research-friendly toolkit.
 
-It is built for research-style inspection of protocol transcripts and related artifacts, not for stealthy scanning or offensive automation. The current version emphasizes rule-driven findings, cross-analyzer correlation, and realistic transcript handling.
+It is built for inspection and validation, not for stealthy scanning or offensive automation.
 
-## Current status
+## Why this repository exists
 
-This repository now includes a working **Phase 4.3 migration baseline**:
-- shared domain model and execution pipeline
-- protocol / crypto / randomness analyzers
-- protocol phase inference, state tracking, and handshake detection
-- normalized Python rules with config-aware thresholds
-- deeper artifact I/O and config loading
-- transcript, replay, fuzzing, and extraction helpers
-- console / JSON / Markdown / HTML reporting
+Protocol failures often do not look dramatic. A handshake may appear to work while quietly reusing challenge material, repeating proofs, leaking deterministic randomness, or looping through retry states without establishing fresh session context.
 
-Phase 5 is now enabled:
-- runtime plugin loading
-- built-in enrichment plugins
-- plugin inspection via CLI
+ProtoAudit is meant to make those patterns visible.
 
-## Package and CLI
+## What ProtoAudit can do
 
-- Python package: `protoaudit`
-- CLI: `protoaudit`
+- Inspect raw transcripts and structured protocol scripts
+- Track message states and infer coarse protocol phases
+- Detect challenge / proof reuse and retry-loop patterns
+- Analyze crypto-related metadata for missing safeguards
+- Analyze randomness-like artifacts for repetition and leakage signals
+- Correlate findings across analyzers
+- Render results to console, JSON, Markdown, and HTML
+- Extend the pipeline through runtime plugins
 
-## Quick start
+## Architecture at a glance
 
-```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -e .[dev]
-pytest
-protoaudit --help
+```mermaid
+flowchart LR
+    A[Artifact / Transcript / Script] --> B[Analyzer]
+    B --> C[Rule Engine]
+    C --> D[Correlation]
+    D --> E[Reporting]
+    C --> F[Plugins]
+    F --> D
 ```
 
-## Quick example
-
-Analyze a realistic transcript:
-
-```bash
-protoaudit analyze protocol examples/transcripts/sample_transcript.txt --profile strict
-```
-
-Analyze bundled metadata examples:
-
-```bash
-protoaudit analyze crypto examples/crypto/sample_crypto.txt --format markdown
-protoaudit analyze randomness examples/randomness/sample_randomness.txt --format json
-```
-
-Use a config file:
-
-```bash
-protoaudit --config examples/config.strict.json analyze protocol examples/transcripts/sample_transcript.txt
-```
-
-## Repository layout
+Repository layout:
 
 ```text
 src/protoaudit/
@@ -72,7 +49,35 @@ src/protoaudit/
   reporting/   console, JSON, Markdown, HTML renderers
 ```
 
-## Command surface
+## Fastest way to try it
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -e .[dev]
+pytest
+protoaudit analyze protocol examples/protocol/retry_loop_case_study/session.txt --profile strict
+```
+
+## Example output
+
+```text
+Analyzer: protocol
+Messages observed: 9
+Handshake detected: yes
+Handshake complete: no
+Repeated challenge-like values: yes
+Repeated response values: yes
+
+Findings:
+- Challenge-like field observed
+- Repeated protocol responses detected
+- Challenge-like values repeat across messages
+- Handshake-like flow appears incomplete
+- Repeated protocol phase loop observed
+```
+
+## Commands
 
 ```bash
 protoaudit analyze protocol <input>
@@ -87,35 +92,64 @@ protoaudit extract json <input>
 protoaudit plugins list
 ```
 
+## Protocol case studies
+
+ProtoAudit ships with three realistic protocol mini case studies under `examples/protocol/`.
+
+| Case study | Input type | What it demonstrates |
+|---|---|---|
+| `retry_loop_case_study/` | timestamped transcript | incomplete handshake, repeated challenge/proof, retry loop |
+| `cached_handshake_material_case_study/` | timestamped transcript | successful-looking handshake with reused session material |
+| `structured_pairing_retry_case_study/` | structured JSON script | repeated pairing artifacts on harness-style input |
+
+Recommended starting point:
+
+```bash
+protoaudit analyze protocol examples/protocol/retry_loop_case_study/session.txt --format markdown
+```
+
+## Configuration and plugins
+
+Use a stricter analysis profile:
+
+```bash
+protoaudit --config examples/config.strict.json analyze protocol examples/transcripts/sample_transcript.txt
+```
+
+List available runtime plugins:
+
+```bash
+protoaudit plugins list
+```
+
+Run analysis with plugin enrichment enabled:
+
+```bash
+protoaudit --config examples/config.plugins.json analyze protocol examples/protocol/retry_loop_case_study/session.txt --format json
+```
+
 ## Recommended first reads
 
 - `docs/QUICKSTART.md`
 - `docs/ARCHITECTURE.md`
 - `docs/ANALYZERS.md`
 - `docs/CONFIGURATION.md`
-- `examples/demo_walkthrough.md`
+- `docs/CASE_STUDIES.md`
+- `docs/PLUGINS.md`
+
+## Current project status
+
+ProtoAudit is already usable as a research-grade protocol analysis project. The repository currently includes:
+
+- shared domain model and execution pipeline
+- protocol / crypto / randomness analyzers
+- protocol phase inference, state tracking, and handshake detection
+- normalized Python rules with config-aware thresholds
+- deeper artifact I/O and config loading
+- transcript, replay, fuzzing, and extraction helpers
+- runtime plugin loading and built-in enrichment plugins
+- realistic protocol case studies and regression tests
 
 ## License
 
 MIT
-
-
-## Plugin quick start
-
-```bash
-protoaudit plugins list
-protoaudit --config examples/config.plugins.json analyze protocol examples/protocol/retry_loop_case_study/session.txt --format json
-```
-
-See `docs/PLUGINS.md` for the runtime loading model.
-
-
-## Additional Protocol Case Studies
-
-ProtoAudit now ships with multiple protocol mini case studies under `examples/protocol/`:
-
-- `retry_loop_case_study/` — incomplete authentication flow with challenge and proof reuse across retries
-- `cached_handshake_material_case_study/` — apparently successful resumptions that reuse challenge material and session identifiers
-- `structured_pairing_retry_case_study/` — structured JSON protocol script showing repeated challenge material in a pairing workflow
-
-These cases are useful both as demo inputs and as regression fixtures for the protocol analyzer.

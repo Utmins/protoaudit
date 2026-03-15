@@ -1,5 +1,17 @@
 # Case Studies
 
+These examples are meant to show how ProtoAudit behaves on realistic protocol artifacts rather than toy one-line inputs.
+
+## Summary matrix
+
+| Case study | Input | Scenario | Typical findings |
+|---|---|---|---|
+| `retry_loop_case_study/` | transcript | authentication retry with repeated challenge and proof | repeated responses, challenge reuse, incomplete handshake, phase loop |
+| `cached_handshake_material_case_study/` | transcript | successful-looking resumed handshake reusing session material | repeated responses, challenge reuse, repeated phase loop |
+| `structured_pairing_retry_case_study/` | structured JSON script | onboarding / pairing retry reusing challenge, token, and proof | repeated responses, challenge reuse, incomplete handshake, phase loop |
+
+---
+
 ## Protocol Analyzer — Challenge Reuse Retry Loop
 
 Path:
@@ -8,7 +20,8 @@ Path:
 examples/protocol/retry_loop_case_study/
 ```
 
-This mini case study demonstrates a realistic authentication retry flow where the same challenge and proof material appear across multiple attempts.
+Scenario:
+A client attempts an authentication flow, receives a challenge, responds, is told to retry, and then receives the same challenge again. The follow-up proof also repeats, and the flow never reaches completion.
 
 Why it matters:
 
@@ -31,6 +44,8 @@ Expected findings include:
 - Handshake-like flow appears incomplete
 - Repeated protocol phase loop observed
 
+---
+
 ## Protocol Analyzer — Cached Handshake Material Across Successful Sessions
 
 Path:
@@ -39,7 +54,8 @@ Path:
 examples/protocol/cached_handshake_material_case_study/
 ```
 
-This case study models a resume-style handshake that completes successfully twice while reusing the same challenge tuple and session identifier.
+Scenario:
+Two resume-style handshake sessions appear to complete successfully, but they reuse the same challenge tuple, proof, and session identifier. The flow looks healthy unless you inspect freshness.
 
 Why it matters:
 
@@ -60,6 +76,8 @@ Expected findings include:
 - Challenge-like values repeat across messages
 - Repeated protocol phase loop observed
 
+---
+
 ## Protocol Analyzer — Structured Device Pairing Retry Loop
 
 Path:
@@ -68,7 +86,8 @@ Path:
 examples/protocol/structured_pairing_retry_case_study/
 ```
 
-This case uses structured JSON steps instead of a raw transcript and shows that ProtoAudit can reason over protocol harness fixtures and replay-style artifacts.
+Scenario:
+A device onboarding / pairing workflow is described as structured JSON rather than a raw transcript. Across retries, the same challenge, token, and proof are reused, and the handshake remains incomplete.
 
 Why it matters:
 
