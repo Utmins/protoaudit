@@ -28,7 +28,49 @@ ProtoAudit is meant to make those patterns visible.
 - Render results to console, JSON, Markdown, and HTML
 - Extend the pipeline through runtime plugins
 
+## Scope and Limitations
+
+ProtoAudit focuses on behavioral analysis of protocol transcripts rather than packet-level inspection.
+
+It is designed to surface structural patterns and anomalies in protocol interactions, including:
+
+- challenge reuse across protocol phases
+- repeated proof or response artifacts
+- deterministic randomness patterns
+- retry-loop protocol states
+- incomplete or inconsistent handshake flows
+
+ProtoAudit is **not intended to replace packet inspection tools** such as network analyzers.
+
+Instead, it complements traditional tools by focusing on protocol behavior and cryptographic metadata patterns that may not be immediately visible in packet captures.
+
+Typical workflow:
+
+1. Capture traffic using a network analyzer
+2. Extract protocol transcripts or message flows
+3. Run ProtoAudit to identify behavioral patterns or anomalies
+
+This design keeps the framework lightweight and focused on protocol research and analysis.
+
 ## Architecture at a glance
+
+ProtoAudit is built as a modular analysis framework.
+
+Core components:
+
+  * Analyzer modules - Individual analyzers inspect protocol transcripts for specific patterns (protocol behavior, cryptographic metadata, randomness anomalies).
+
+  * Rule engine - Findings are generated using rule-driven pattern detection.
+
+  * Plugin system - Additional analyzers can be loaded dynamically.
+
+  * Reporting layer - Results can be exported in multiple formats:
+      - console,
+      - JSON,
+      - Markdown,
+      - and HTML.
+
+This modular design allows researchers to extend ProtoAudit with new protocol analysis techniques.
 
 ```mermaid
 flowchart LR
@@ -51,25 +93,15 @@ src/protoaudit/
   plugins/     optional extension points with runtime loading
   reporting/   console, JSON, Markdown, HTML renderers
 ```
-## Architecture
 
-ProtoAudit is built as a modular analysis framework.
+## Recommended first reads
 
-Core components:
-
-  * Analyzer modules - Individual analyzers inspect protocol transcripts for specific patterns (protocol behavior, cryptographic metadata, randomness anomalies).
-
-  * Rule engine - Findings are generated using rule-driven pattern detection.
-
-  * Plugin system - Additional analyzers can be loaded dynamically.
-
-  * Reporting layer - Results can be exported in multiple formats:
-      - console,
-      - JSON,
-      - Markdown,
-      - and HTML.
-
-This modular design allows researchers to extend ProtoAudit with new protocol analysis techniques.
+- `docs/QUICKSTART.md`
+- `docs/ARCHITECTURE.md`
+- `docs/ANALYZERS.md`
+- `docs/CONFIGURATION.md`
+- `docs/CASE_STUDIES.md`
+- `docs/PLUGINS.md`
 
 ## Fastest way to try it
 
@@ -149,6 +181,23 @@ protoaudit plugins list
 
 ## Protocol case studies
 
+ProtoAudit is designed for protocol behavior analysis in research and investigation scenarios.
+
+Typical use cases include:
+
+  * Protocol research
+      Researchers analyzing custom or undocumented protocols can use ProtoAudit to detect structural patterns such as challenge reuse, retry loops, and deterministic randomness.
+
+  * Security investigations
+      Security analysts can inspect protocol transcripts for signs of implementation mistakes or unsafe cryptographic behavior.
+
+  * CTF protocol challenges
+      Many CTF challenges include proprietary protocol implementations.  
+      ProtoAudit can help surface structural weaknesses or repeated artifacts within protocol interactions.
+
+  * Implementation testing
+      Developers working on protocol implementations can use ProtoAudit to validate that randomness, challenge generation, and handshake flows behave as expected.
+
 ProtoAudit ships with three realistic protocol mini case studies under `examples/protocol/`.
 
 | Case study | Input type | What it demonstrates |
@@ -182,15 +231,6 @@ Run analysis with plugin enrichment enabled:
 ```bash
 protoaudit --config examples/config.plugins.json analyze protocol examples/protocol/retry_loop_case_study/session.txt --format json
 ```
-
-## Recommended first reads
-
-- `docs/QUICKSTART.md`
-- `docs/ARCHITECTURE.md`
-- `docs/ANALYZERS.md`
-- `docs/CONFIGURATION.md`
-- `docs/CASE_STUDIES.md`
-- `docs/PLUGINS.md`
 
 ## Current project status
 
