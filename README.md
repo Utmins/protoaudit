@@ -185,17 +185,17 @@ ProtoAudit is designed for protocol behavior analysis in research and investigat
 
 Typical use cases include:
 
-  * Protocol research
+  * Protocol research\
       Researchers analyzing custom or undocumented protocols can use ProtoAudit to detect structural patterns such as challenge reuse, retry loops, and deterministic randomness.
 
-  * Security investigations
+  * Security investigations\
       Security analysts can inspect protocol transcripts for signs of implementation mistakes or unsafe cryptographic behavior.
 
-  * CTF protocol challenges
+  * CTF protocol challenges\
       Many CTF challenges include proprietary protocol implementations.  
       ProtoAudit can help surface structural weaknesses or repeated artifacts within protocol interactions.
 
-  * Implementation testing
+  * Implementation testing\
       Developers working on protocol implementations can use ProtoAudit to validate that randomness, challenge generation, and handshake flows behave as expected.
 
 ProtoAudit ships with three realistic protocol mini case studies under `examples/protocol/`.
