@@ -3,6 +3,9 @@
 ![Python](https://img.shields.io/badge/python-3.10+-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Status](https://img.shields.io/badge/status-research--tool-orange)
+![Security Research Tool](https://img.shields.io/badge/domain-security%20research-purple)
+![Protocol Analysis](https://img.shields.io/badge/focus-protocol%20analysis-red)
+![Maintained](https://img.shields.io/badge/status-active%20development-brightgreen)
 
 ProtoAudit is a modular defensive framework for analyzing protocol behavior, cryptographic metadata, and randomness patterns. It combines transcript parsing, rule-driven findings, cross-analyzer correlation, and case-study driven examples in one research-friendly toolkit.
 
@@ -48,6 +51,27 @@ src/protoaudit/
   plugins/     optional extension points with runtime loading
   reporting/   console, JSON, Markdown, HTML renderers
 ```
+## Architecture
+
+ProtoAudit is built as a modular analysis framework.
+
+Core components:
+
+Analyzer modules
+  Individual analyzers inspect protocol transcripts for specific patterns
+  (protocol behavior, cryptographic metadata, randomness anomalies).
+
+Rule engine
+  Findings are generated using rule-driven pattern detection.
+
+Plugin system
+  Additional analyzers can be loaded dynamically.
+
+Reporting layer
+  Results can be exported in multiple formats:
+  console, JSON, Markdown, and HTML.
+
+This modular design allows researchers to extend ProtoAudit with new protocol analysis techniques.
 
 ## Fastest way to try it
 
